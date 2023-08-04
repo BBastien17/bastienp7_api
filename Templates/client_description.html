@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <title>Description du client</title>
+        <link rel="shortcut icon" href="#">
+
+    
+    </head>
+
+        
+    <body>
+        <div class="content">
+            <header>
+                <div class="header-background"></div>
+                <div class="title">
+                <h1>
+                    Bienvenue chez Prêt à dépenser
+                </h1>
+                <h4>
+                    Created by Bastien B
+                </h4>
+
+                <p>
+                    <h4>
+                        Voici la description de l'importance des variables dans le résultat de score pour l'emsemble du dataset :
+                    </h4>
+                    <p>
+                        <a href="/Users/Bastien/Projet_7/Static/css/images/inter_globale2.png">Cliquez ici</a>        
+                    </p>
+
+                </p>
+    
+                <p>
+                    <label for="label_id_client">Voici la description client :</label>
+                </p>
+                    <h4>Le score pour un prêt accepté du client avec la référence {{ value }} est  : {{ score }}
+                    </h4>
+
+
+                <a href="{{ url_for('index') }}" class="btn del-btn">Retour</a>
+                </div>
+            </header>
+
+            <main>
+                <div class="chartContainer">
+                </div>
+                
+            </main>
+        </div>
+    
+
+    </body>
+  
+    </html>

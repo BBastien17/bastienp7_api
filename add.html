@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <title>Référence du client</title>
+        <link rel="shortcut icon" href="#">
+
+    
+    </head>
+
+        
+    <body>
+        <div class="content">
+            <header>
+                <div class="header-background"></div>
+                <div class="title">
+                <h1>
+                    Bienvenue chez Prêt à dépenser
+                </h1>
+                <h4>
+                    Created by Bastien B
+                </h4>
+    
+                <p>
+                    <label for="label_id_client">Quel est la référence client :</label>
+                </p>
+                    <form action="" method="POST">
+                        <input type="number" class="id_input" id="id_client" name="id_client" min="0" max="307511">
+                        <!--<input type="button" name="valid_button" value="Valider" onclick=(id_client)>-->
+                        <!--<input type="text" class="todo-input" name="todo" id="" required>-->
+                        <input type="submit" class="btn valid-btn from-submit" value="Valider">
+                    </form>
+                <a href="{{ url_for('index') }}" class="btn del-btn">Retour</a>
+                </div>
+            </header>
+
+            <main>
+                <div class="chartContainer">
+                </div>
+                
+            </main>
+        </div>
+    
+
+    </body>
+  
+    </html>

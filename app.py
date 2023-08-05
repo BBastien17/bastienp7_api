@@ -11,6 +11,7 @@ import pandas as pd
 from flask import Flask, render_template, redirect, request, url_for
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+from application import create_app
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
@@ -142,6 +143,10 @@ def client_description():
 
 
 if __name__ == '__main__':
+
+    #flask_app = create_app(prod):
+
     #unittest.main()
     #app.run(debug=False, host="0.0.0.0", port=8080)
     app.run()
+    #flask_app.run()

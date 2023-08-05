@@ -17,9 +17,9 @@ from sklearn.preprocessing import LabelEncoder
 path = 'Projet_7/'
 model = mlflow.sklearn.load_model('xgb_model_final/')
 #Importation des infos clients
-data_work_complet = pd.read_csv("C:/Users/Bastien/Projet_7/data_work.csv")
+data_work_complet = pd.read_csv("./data_work.csv")
 print(data_work_complet.head())
-data_target_complet = pd.read_csv("C:/Users/Bastien/Projet_7/data_target.csv")
+data_target_complet = pd.read_csv("./data_target.csv")
 
 
 #Fonction pour calculer le score prédictproba du client

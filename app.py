@@ -150,6 +150,6 @@ if __name__ == '__main__':
     print("hello")
     #unittest.main()
     #app.run(debug=False, host="0.0.0.0", port=8080)
-    #app.run(debug=False)
-    app.run(debug=True)
+    app.run(debug=False)
+    #app.run(debug=True)
     #flask_app.run()

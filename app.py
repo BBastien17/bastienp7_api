@@ -110,7 +110,7 @@ class UneClasseDeTest(unittest.TestCase):
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config['SECRET_KEY] = '74c1112c-d16f-446c-9b6f-ee3315b7ec8b'
+app.config['SECRET_KEY] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 
 todos = {}
 

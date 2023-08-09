@@ -20,6 +20,7 @@ model = mlflow.sklearn.load_model('xgb_model_final/')
 data_work_complet = pd.read_csv("./data_work.csv")
 print(data_work_complet.head())
 data_target_complet = pd.read_csv("./data_target.csv")
+print(data_target_complet.head())
 
 
 #Fonction pour calculer le score prédictproba du client
@@ -119,8 +120,7 @@ def index():
     return render_template('dashboard.html', todos=todos)
 
 
-#@app.route('/add', methods = ['GET', 'POST'])
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
         todos.clear()
@@ -130,8 +130,7 @@ def add():
         return redirect(url_for('client_description'))
     return render_template('add.html')
 
-#@app.route('/client_description', methods = ['GET', 'POST'])
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     dict_key_select = list(todos)[-1]
     ref_client = todos[dict_key_select]

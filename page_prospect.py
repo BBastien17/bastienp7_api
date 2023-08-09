@@ -24,15 +24,15 @@ import pickle5 as pickle
 path = 'Projet_7/'
 model = mlflow.sklearn.load_model('xgb_model_final/')
 #Importation des pickles enregistrés
-load_fichierSauvegarde = open("shap_model_X_train", "rb")
-shap_values_1 = pickle.load(load_fichierSauvegarde)
-load_fichierSauvegarde.close()
+#load_fichierSauvegarde = open("shap_model_X_train", "rb")
+#shap_values_1 = pickle.load(load_fichierSauvegarde)
+#load_fichierSauvegarde.close()
 load_fichierSauvegarde2 = open("shap_model_data_X_train", "rb")
 explainer = pickle.load(load_fichierSauvegarde2)
 load_fichierSauvegarde2.close()
-load_fichierSauvegarde3 = open("shap_model_data_X_test","rb")
-shap_values_2 = pickle.load(load_fichierSauvegarde3)
-load_fichierSauvegarde3.close()
+#load_fichierSauvegarde3 = open("shap_model_data_X_test","rb")
+#shap_values_2 = pickle.load(load_fichierSauvegarde3)
+#load_fichierSauvegarde3.close()
 
 #Utilisation d'un fonction pour comparer un individu au reste de la population
 def compare_client(data_work, data_list_result):

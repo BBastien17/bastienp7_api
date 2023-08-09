@@ -27,9 +27,13 @@ model = mlflow.sklearn.load_model('xgb_model_final/')
 #load_fichierSauvegarde = open("shap_model_X_train", "rb")
 #shap_values_1 = pickle.load(load_fichierSauvegarde)
 #load_fichierSauvegarde.close()
-load_fichierSauvegarde2 = open("shap_model_data_X_train", "rb")
-explainer = pickle.load(load_fichierSauvegarde2)
-load_fichierSauvegarde2.close()
+
+#commenter les 3 lignes suivantes pour les tests
+#load_fichierSauvegarde2 = open("shap_model_data_X_train", "rb")
+#explainer = pickle.load(load_fichierSauvegarde2)
+#load_fichierSauvegarde2.close()
+
+
 #load_fichierSauvegarde3 = open("shap_model_data_X_test","rb")
 #shap_values_2 = pickle.load(load_fichierSauvegarde3)
 #load_fichierSauvegarde3.close()
@@ -169,7 +173,7 @@ def page_p (data_work, data_target, data_complete) :
             #Utile pour les tests afin d'afficher les valeurs du client sélectionné
             st.write(data_line_pred)
             #Utilisation de la méthode shap via le pickle
-            shap_values = explainer(data_line_pred)
+            #shap_values = explainer(data_line_pred)
 
             #Utilisation de  et affichage de l'interprétabilité locale
             fig = shap.plots.bar(shap_values[0])  

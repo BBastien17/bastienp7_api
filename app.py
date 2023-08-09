@@ -124,8 +124,9 @@ def index():
 def add():
     if request.method == 'POST':
         todos.clear()
-        #index = len(todos) + 1
-        index = len(todos)
+        print("taille de la variable todos avant operation : ", len(todos))
+        index = len(todos) + 1
+        #index = len(todos)
         todos[index] = request.form.get("id_client")
         print(todos)
         return redirect(url_for('client_description'))

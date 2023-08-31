@@ -11,10 +11,10 @@ flavors:
     code: null
     pickled_model: model.pkl
     serialization_format: cloudpickle
-    sklearn_version: 1.0.2
+    sklearn_version: 1.2.2
 mlflow_version: 2.3.2
-model_uuid: b9027209f01f4a1ebb31a7e8a761ce61
+model_uuid: 87551412b7574b72a81219611f5da7a1
 signature:
   inputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1, 15]}}]'
   outputs: '[{"name": "TARGET", "type": "long"}]'
-utc_time_created: '2023-06-18 22:06:43.277481'
+utc_time_created: '2023-08-29 22:51:24.794806'

@@ -1,6 +1,6 @@
 python: 3.9.12
 build_dependencies:
-- pip==23.1.2
+- pip==23.2.1
 - setuptools==61.2.0
 - wheel==0.37.1
 dependencies:

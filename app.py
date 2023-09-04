@@ -25,6 +25,7 @@ print(data_target_complet.head())
 
 #Fonction pour calculer le score prédictproba du client
 def calc_score_predictproba (ref_client, data_work_complet):
+    print("Lancement de la fonction calc_score_predictproba")
     #Création d'un dataframe avec les information du client sélectionné :
     data_work_client = pd.DataFrame(data_work_complet,index=[ref_client])
     print(data_work_client)
@@ -134,8 +135,9 @@ def add():
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    dict_key_select = list(todos)[-1]
-    #dict_key_select = list(todos)[0]
+    print("Lancement de la page client_description")
+    #dict_key_select = list(todos)[-1]
+    dict_key_select = list(todos)[0]
     ref_client = todos[dict_key_select]
     ref_client = int(ref_client)
     print(ref_client)

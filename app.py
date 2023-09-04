@@ -136,8 +136,8 @@ def add():
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     print("Lancement de la page client_description")
-    #dict_key_select = list(todos)[-1]
-    dict_key_select = list(todos)[0]
+    dict_key_select = list(todos)[-1]
+    #dict_key_select = list(todos)[0]
     ref_client = todos[dict_key_select]
     ref_client = int(ref_client)
     print(ref_client)

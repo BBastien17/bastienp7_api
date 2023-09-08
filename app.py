@@ -139,6 +139,7 @@ def add():
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     test = add()
+    print("Voici le résultat de la variable test : ", test)
     print("Lancement de la page client_description")
     #print("voici todos avant forcage : ", save_todos)
     todos = {1: '2'}

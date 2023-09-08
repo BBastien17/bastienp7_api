@@ -134,7 +134,7 @@ def add():
         print("Voici la variable todos dans la fonction add : ", todos)
         new_todos = todos
         return (redirect(url_for('client_description')), new_todos)
-    save_todos = Coup_data(new_todos)
+    save_todos = todos[index]
     print("Variable last_todos : ", save_todos)
     return render_template('add.html', save_todos = save_todos)
 

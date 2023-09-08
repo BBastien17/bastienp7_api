@@ -131,7 +131,7 @@ def add():
         todos[index] = request.form.get("id_client")
         print(todos)
         return redirect(url_for('client_description'))
-    return render_template('add.html', todos=todos)
+    return render_template('add.html', id_client=todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():

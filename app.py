@@ -138,16 +138,18 @@ def add():
 def client_description():
     print("Lancement de la page client_description")
     todos = 1
-    print(list(todos))
-    dict_key_select = list(todos)[-1]
-    #dict_key_select = list(todos)[0]
+    #print(list(todos))
+    #dict_key_select = list(todos)[-1]
+    dict_key_select = list(todos)[0]
+    print("Voici la variable dict_key_select : ", dict_key_select)
     ref_client = todos[dict_key_select]
+    print("Voici la variable ref_client : ", ref_client)
     ref_client = int(ref_client)
-    print(ref_client)
+    print("Voici ref_client après transformation en int : ", ref_client)
     score_client = calc_score_predictproba(ref_client, data_work_complet)
-    print(score_client)
+    print("Voici la variable score_client : ", score_client)
     score_client_accept = round(score_client[0][0], 3)
-    print(score_client_accept)
+    print("Voici la variable score_client_accept : ", score_client_accept)
     if request.method == 'POST':
         return redirect(url_for('index'))
     return render_template('client_description.html', value=ref_client, score=score_client_accept)

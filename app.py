@@ -129,7 +129,8 @@ def add():
         index = len(todos) + 1
         #index = len(todos)
         todos[index] = request.form.get("id_client")
-        print(todos)
+        print("Voici la variable todos[index] : ", todos[index])
+        print("Voici la variable todos dans la fonction add : ", todos)
         return redirect(url_for('client_description'))
     return render_template('add.html', id_client=todos)
 
@@ -137,8 +138,8 @@ def add():
 def client_description():
     print("Lancement de la page client_description")
     print(list(todos))
-    #dict_key_select = list(todos)[-1]
-    dict_key_select = list(todos)[0]
+    dict_key_select = list(todos)[-1]
+    #dict_key_select = list(todos)[0]
     ref_client = todos[dict_key_select]
     ref_client = int(ref_client)
     print(ref_client)

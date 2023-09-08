@@ -123,7 +123,7 @@ def index():
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
-    if request.method == 'POST':
+    if request.method == 'POST' (redirect_client_description, new_todos):
         todos = {}
         todos.clear()
         print("taille de la variable todos avant operation : ", len(todos))
@@ -135,7 +135,8 @@ def add():
         new_todos = todos
         return (redirect(url_for('client_description')), new_todos)
     last_todos = new_todos
-    return (render_template('add.html'), last_todos)
+    print("Variable last_todos : ", last_todos)
+    return (render_template('add.html')
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():

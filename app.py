@@ -131,11 +131,12 @@ def add():
         todos[index] = request.form.get("id_client")
         print(todos)
         return redirect(url_for('client_description'))
-    return render_template('add.html')
+    return render_template('add.html', todos=todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     print("Lancement de la page client_description")
+    print(list(todos))
     #dict_key_select = list(todos)[-1]
     dict_key_select = list(todos)[0]
     ref_client = todos[dict_key_select]

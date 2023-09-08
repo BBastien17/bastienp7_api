@@ -135,12 +135,11 @@ def add():
         new_todos = todos
         print("id_client est : ", id_client)
         return (redirect(url_for('client_description')), new_todos)
-    #save_todos = todos[index]
-    #print("Variable last_todos : ", save_todos)
     return render_template('add.html')#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
+    test = add()
     print("Lancement de la page client_description")
     #print("voici todos avant forcage : ", save_todos)
     todos = {1: '2'}

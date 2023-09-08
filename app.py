@@ -132,13 +132,14 @@ def add():
         todos[index] = request.form.get("id_client")
         print("Voici la variable todos[index] : ", todos[index])
         print("Voici la variable todos dans la fonction add : ", todos)
+        new_todos = todos
         return redirect(url_for('client_description'))
-    return render_template('add.html')#, todos=id_client)
+    return render_template('add.html'), new_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     print("Lancement de la page client_description")
-    print("voici todos avant forcage : ", todos)
+    print("voici todos avant forcage : ", new_todos)
     todos = {1: '2'}
     #print(list(todos))
     #dict_key_select = list(todos)[-1]

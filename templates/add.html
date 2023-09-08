@@ -28,7 +28,8 @@
                     <form action="" method="POST">
                         <input type="number" class="id_input" id="id_client" name="id_client" min="0" max="307511">
                         <!--<input type="submit" class="btn valid-btn from-submit" value="Valider">-->
-                        <a href="{{ url_for('client_description') }}" class="btn add-btn">Valider</a>
+                        <a href="{{ url_for('client_description') }}" class="btn valid-btn from-submit" value="Valider">
+                        <!--<a href="{{ url_for('client_description') }}" class="btn add-btn">Valider</a> -->
                     </form>
                 <a href="{{ url_for('index') }}" class="btn del-btn">Retour</a>
                 </div>

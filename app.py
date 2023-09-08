@@ -134,14 +134,14 @@ def add():
         print("Voici la variable todos dans la fonction add : ", todos)
         new_todos = todos
         return (redirect(url_for('client_description')), new_todos)
-    
-    print("Variable last_todos : ", new_todos)
-    return render_template('add.html')
+    save_todos = Coup_data(new_todos)
+    print("Variable last_todos : ", save_todos)
+    return render_template('add.html', save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     print("Lancement de la page client_description")
-    print("voici todos avant forcage : ", last_todos)
+    print("voici todos avant forcage : ", save_todos)
     todos = {1: '2'}
     #print(list(todos))
     #dict_key_select = list(todos)[-1]

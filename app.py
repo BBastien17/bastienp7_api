@@ -114,7 +114,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 
-todos = {}
+#todos = {}
 
 @app.get("/")
 def index():
@@ -124,6 +124,7 @@ def index():
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
+        todos = {}
         todos.clear()
         print("taille de la variable todos avant operation : ", len(todos))
         index = len(todos) + 1
@@ -137,6 +138,7 @@ def add():
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     print("Lancement de la page client_description")
+    print("voici todos avant forcage : ", todos)
     todos = {1: '2'}
     #print(list(todos))
     #dict_key_select = list(todos)[-1]

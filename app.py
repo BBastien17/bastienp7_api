@@ -136,7 +136,7 @@ def add():
         return (redirect(url_for('client_description')), new_todos)
     last_todos = new_todos
     print("Variable last_todos : ", last_todos)
-    return (render_template('add.html')
+    return render_template('add.html')
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():

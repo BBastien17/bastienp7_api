@@ -133,8 +133,8 @@ def add():
         print("Voici la variable todos[index] : ", todos[index])
         print("Voici la variable todos dans la fonction add : ", todos)
         new_todos = todos
-        return redirect(url_for('client_description'), new_todos=new_todos)
-    return render_template('add.html')
+        return (redirect(url_for('client_description')), new_todos)
+    return render_template('add.html', new_todos=new_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():

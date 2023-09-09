@@ -140,7 +140,7 @@ def add():
     return render_template('add.html')#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
-def client_description():
+def client_description(name):
     print("id_get_client est : ", name)
     todos = {}
     todos.clear()

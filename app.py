@@ -136,8 +136,8 @@ def add():
         #print("Voici la variable todos dans la fonction add : ", todos)
         #new_todos = todos
         return redirect(url_for('client_description(name)', name = id_get_client))
-    #todo_test = new_todos
-    return render_template('add.html')#, save_todos = save_todos)
+    id_get_client = request.form.get("id_client")
+    return render_template('add.html', name = id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description(name):

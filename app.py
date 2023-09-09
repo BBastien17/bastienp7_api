@@ -135,13 +135,15 @@ def add():
         #print("Voici la variable todos[index] : ", todos[index])
         #print("Voici la variable todos dans la fonction add : ", todos)
         #new_todos = todos
-        return redirect(url_for('client_description', name = id_get_client))
+        return id_get_client
+        return redirect(url_for('client_description'))
     id_get_client = request.form.get("id_client")
-    return (render_template('add.html'), name == id_get_client)#, save_todos = save_todos)
+    return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    detail_add, name = add()
+    
+    #detail_add, name = add()
     print("id_get_client est : ", id_get_client)
     print("detail_add est : ", detail_add)
     todos = {}

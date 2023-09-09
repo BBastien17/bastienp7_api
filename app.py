@@ -137,12 +137,12 @@ def add():
         #new_todos = todos
         return redirect(url_for('client_description', name = id_get_client))
     id_get_client = request.form.get("id_client")
-    return render_template('add.html', name = id_get_client)#, save_todos = save_todos)
+    return (render_template('add.html'), id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    detail_add, name = add()
-    print("id_get_client est : ", name)
+    detail_add, id_get_client = add()
+    print("id_get_client est : ", id_get_client)
     todos = {}
     todos.clear()
     print("taille de la variable todos avant operation : ", len(todos))

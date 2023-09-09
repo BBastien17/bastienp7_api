@@ -123,25 +123,32 @@ def index():
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
+    todo_test = {}
     if request.method == 'POST':
-        todos = {}
-        todos.clear()
-        print("taille de la variable todos avant operation : ", len(todos))
-        index = len(todos) + 1
+        #todos = {}
+        #todos.clear()
+        #print("taille de la variable todos avant operation : ", len(todos))
+        #index = len(todos) + 1
         #index = len(todos)
-        todos[index] = request.form.get("id_client")
-        print("Voici la variable todos[index] : ", todos[index])
-        print("Voici la variable todos dans la fonction add : ", todos)
-        new_todos = todos
-        return (redirect(url_for('client_description')), new_todos)
+        id_get_client = request.form.get("id_client")
+        #todos[index] = request.form.get("id_client")
+        #print("Voici la variable todos[index] : ", todos[index])
+        #print("Voici la variable todos dans la fonction add : ", todos)
+        #new_todos = todos
+        return redirect(url_for('client_description', name = id_get_client))
+    #todo_test = new_todos
     return render_template('add.html')#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    test = add()
-    print("Voici le résultat de la variable test : ", test)
+    print("id_get_client est : ", id_get_client)
+    todos = {}
+    todos.clear()
+    print("taille de la variable todos avant operation : ", len(todos))
+    index = len(todos) + 1
+    todos[index] = id_get_client 
     print("Lancement de la page client_description")
-    #print("voici todos avant forcage : ", save_todos)
+    #print("voici todos avant forcage : ", todos)
     todos = {1: '2'}
     #print(list(todos))
     #dict_key_select = list(todos)[-1]

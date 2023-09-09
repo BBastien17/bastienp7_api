@@ -141,7 +141,7 @@ def add():
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    print("id_get_client est : ", id_get_client)
+    print("id_get_client est : ", name)
     todos = {}
     todos.clear()
     print("taille de la variable todos avant operation : ", len(todos))

@@ -138,7 +138,7 @@ def add():
         #return id_get_client
         #todos.append(id_get_client)
         todo_test = {}
-        todo_test[index].append(todos)
+        todo_test[1].append(todos)
         print("Variable toto_test : ", todo_test)
         
         return redirect(url_for('client_description', todo_test=todo_test))

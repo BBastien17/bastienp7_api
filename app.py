@@ -138,13 +138,13 @@ def add():
         #return id_get_client
         #todos.append(id_get_client)
         
-        todo_test = {1: todos}
+        todo_test = todos
         #todo_test[1].append(todos)
         print("Variable toto_test : ", todo_test)
         
         return redirect(url_for('client_description', todo_test=todo_test))
     #id_get_client = request.form.get("id_client")
-    #print("avant render template la variable totos : ", todo_test)
+    print("avant render template la variable totos : ", todo_test)
     return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])

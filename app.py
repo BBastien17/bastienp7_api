@@ -128,17 +128,17 @@ def add():
         #todos = {}
         todos.clear()
         #print("taille de la variable todos avant operation : ", len(todos))
-        index = len(todos_test) + 1
+        index = len(todos) + 1
         #index = len(todos)
         #id_get_client = request.form.get("id_client")
-        todo[index] = request.form.get("id_client")
+        todos[index] = request.form.get("id_client")
         print("Voici la variable todos[index] : ", todos[index])
         print("Voici la variable todos dans la fonction add : ", todos)
         #new_todos = todos
         #return id_get_client
         #todos.append(id_get_client)
         todo_test = {}
-        todo_test[index].append(todo[index])
+        todo_test[index].append(todos[index])
         print("Variable toto_test : ", todo_test)
         
         return redirect(url_for('client_description', todo_test=todo_test))

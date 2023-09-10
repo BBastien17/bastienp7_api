@@ -126,14 +126,14 @@ def add():
     todo_test = {}
     if request.method == 'POST':
         #todos = {}
-        #todos.clear()
+        todos_test.clear()
         #print("taille de la variable todos avant operation : ", len(todos))
-        #index = len(todos) + 1
+        index = len(todos_test) + 1
         #index = len(todos)
         #id_get_client = request.form.get("id_client")
         todo_test[index] = request.form.get("id_client")
         #print("Voici la variable todos[index] : ", todos[index])
-        #print("Voici la variable todos dans la fonction add : ", todos)
+        print("Voici la variable todos dans la fonction add : ", todos_test)
         #new_todos = todos
         #return id_get_client
         #todos.append(id_get_client)

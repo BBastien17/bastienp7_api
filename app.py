@@ -144,7 +144,7 @@ def add():
         
         return redirect(url_for('client_description', todo_test=todo_test))
     #id_get_client = request.form.get("id_client")
-    print("avant render template la variable totos : ", todo_test)
+    #print("avant render template la variable totos : ", todo_test)
     return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])

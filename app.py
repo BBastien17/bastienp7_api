@@ -130,13 +130,14 @@ def add():
         #print("taille de la variable todos avant operation : ", len(todos))
         #index = len(todos) + 1
         #index = len(todos)
-        id_get_client = request.form.get("id_client")
-        #todos[index] = request.form.get("id_client")
+        #id_get_client = request.form.get("id_client")
+        todos[index] = request.form.get("id_client")
         #print("Voici la variable todos[index] : ", todos[index])
         #print("Voici la variable todos dans la fonction add : ", todos)
         #new_todos = todos
         #return id_get_client
-        todos.append(id_get_client)
+        #todos.append(id_get_client)
+        
         return redirect(url_for('client_description', todos=todos))
     #id_get_client = request.form.get("id_client")
     print("avant render template la variable totos : ", todos)

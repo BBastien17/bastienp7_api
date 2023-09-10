@@ -131,16 +131,16 @@ def add():
         #index = len(todos) + 1
         #index = len(todos)
         #id_get_client = request.form.get("id_client")
-        todos[index] = request.form.get("id_client")
+        todo_test[index] = request.form.get("id_client")
         #print("Voici la variable todos[index] : ", todos[index])
         #print("Voici la variable todos dans la fonction add : ", todos)
         #new_todos = todos
         #return id_get_client
         #todos.append(id_get_client)
         
-        return redirect(url_for('client_description', todos=todos))
+        return redirect(url_for('client_description', todo_test=todo_test))
     #id_get_client = request.form.get("id_client")
-    print("avant render template la variable totos : ", todos)
+    print("avant render template la variable totos : ", todo_test)
     return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])

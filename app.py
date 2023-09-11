@@ -132,7 +132,8 @@ def add():
     print("Voici la variable todos[index] : ", todos[index])
     print("Voici la variable todos dans la fonction add : ", todos)
     
-    if todos[1] is None or todos[1] == '':
+    #if todos[1] is None or todos[1] == '':
+    if request.method == 'POST':
         todos[index] = request.form.get("id_client")
         return redirect(url_for('client_description'))
         #return redirect(url_for('index'))

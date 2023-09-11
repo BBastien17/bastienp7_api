@@ -114,18 +114,18 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 
-#todos = {}
+todos = {}
 
 @app.get("/")
 def index():
-    #return render_template('dashboard.html', todos=todos)
-    return render_template('dashboard.html')#, todos=todos)
+    return render_template('dashboard.html', todos=todos)
+    #return render_template('dashboard.html')#, todos=todos)
 
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     #todo_test = {}
-    todos = {}
+    #todos = {}
     todos.clear()
     index = len(todos) + 1
     todos[index] = request.form.get("id_client")

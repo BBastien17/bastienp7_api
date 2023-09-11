@@ -118,7 +118,8 @@ app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 
 @app.get("/")
 def index():
-    return render_template('dashboard.html', todos=todos)
+    #return render_template('dashboard.html', todos=todos)
+    return render_template('dashboard.html')#, todos=todos)
 
 
 @app.route('/add', methods = ['GET', 'POST'])

@@ -125,47 +125,14 @@ def index():
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
-    #todo_test = {}
-    #todos = {}
         todos.clear()
         index = len(todos) + 1
         todos[index] = request.form.get("id_client")
         print("Voici la variable todos[index] : ", todos[index])
-        print("Voici la variable todos dans la fonction add : ", todos)
-    
-    #if todos[1] is None or todos[1] == '':
-    #if request.method == 'POST':
-        #todos[index] = request.form.get("id_client")
+        print("Voici la variable todos dans la fonction add : ", todos)    
         return redirect(url_for('client_description'))
-        #return redirect(url_for('index'))
     return redirect(url_for('add'))#, save_todos = todos))
 
-    return redirect(url_for('client_description'))
-    return render_template('add.html')
-    
-    #if request.method == 'POST':
-        #todos = {}
-        #todos.clear()
-        #print("taille de la variable todos avant operation : ", len(todos))
-        #index = len(todos) + 1
-        #index = len(todos)
-        #id_get_client = request.form.get("id_client")
-        #todos[index] = request.form.get("id_client")
-        #print("Voici la variable todos[index] : ", todos[index])
-        #print("Voici la variable todos dans la fonction add : ", todos)
-        #new_todos = todos
-        #return id_get_client
-        #todos.append(id_get_client)
-        
-        #todo_test = todos
-        #todo_test[1].append(todos)
-        #print("Variable toto_test : ", todo_test)
-        
-        #return redirect(url_for('client_description'))#, todo_test=todo_test))
-    #id_get_client = request.form.get("id_client")
-    #print("avant render template la variable totos : ", todo_test)
-    #return redirect(url_for('add', save_todos = todo_test))
-    #return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():

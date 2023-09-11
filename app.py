@@ -129,10 +129,12 @@ def add():
         index = len(todos) + 1
         todos[index] = request.form.get("id_client")
         print("Voici la variable todos[index] : ", todos[index])
-        print("Voici la variable todos dans la fonction add : ", todos)    
-        #return redirect(url_for('client_description'))
-        return render_template('client_description.html')
+        print("Voici la variable todos dans la fonction add : ", todos)
+        #Permet d'être rediriger vers une autre fonction Python
+        return redirect(url_for('client_description'))
+        #return render_template('client_description.html')
     #return redirect(url_for('add'))#, save_todos = todos))
+    #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
 

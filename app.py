@@ -134,9 +134,9 @@ def add():
     
     if todos[1] is None or todos[1] == '':
         todos[index] = request.form.get("id_client")
-        return redirect(url_for('add'))
+        return redirect(url_for('client_description'))
         #return redirect(url_for('index'))
-    return redirect(url_for('client_description', save_todos = todos))
+    return redirect(url_for('add'))#, save_todos = todos))
     
     #if request.method == 'POST':
         #todos = {}

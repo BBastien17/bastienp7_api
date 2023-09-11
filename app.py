@@ -131,7 +131,7 @@ def add():
         print("Voici la variable todos[index] : ", todos[index])
         print("Voici la variable todos dans la fonction add : ", todos)
         #Permet d'être rediriger vers une autre fonction Python
-        return redirect(url_for('client_description'), todos=todos)
+        return redirect(url_for('client_description')), todos
         #return render_template('client_description.html')
     #return redirect(url_for('add'))#, save_todos = todos))
     #Permet d'être rediriger vers une autre page html

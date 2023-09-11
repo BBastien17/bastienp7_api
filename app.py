@@ -119,7 +119,6 @@ todos = {}
 @app.get("/")
 def index():
     return render_template('dashboard.html', todos=todos)
-    #return render_template('dashboard.html')#, todos=todos)
 
 
 @app.route('/add', methods = ['GET', 'POST'])

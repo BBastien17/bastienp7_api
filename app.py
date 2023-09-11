@@ -145,7 +145,8 @@ def add():
         return redirect(url_for('client_description', todo_test=todo_test))
     #id_get_client = request.form.get("id_client")
     print("avant render template la variable totos : ", todo_test)
-    return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
+    return redirect(url_for('add.html', save_todos = todos)
+    #return render_template('add.html')#, name == id_get_client)#, save_todos = save_todos)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
@@ -153,11 +154,11 @@ def client_description():
     #detail_add, name = add()
     print("id_get_client est : ", todos)
     #print("detail_add est : ", detail_add)
-    todos = {}
-    todos.clear()
+    #todos = {}
+    #todos.clear()
     print("taille de la variable todos avant operation : ", len(todos))
-    index = len(todos) + 1
-    todos[index] = id_get_client 
+    #index = len(todos) + 1
+    #todos[index] = id_get_client 
     print("Lancement de la page client_description")
     #print("voici todos avant forcage : ", todos)
     todos = {1: '2'}

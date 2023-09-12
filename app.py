@@ -127,7 +127,7 @@ def saved_id():
     todos[index] = recup_value
     print("Voici la variable todos[index] : ", todos[index])
     print("Voici la variable todos dans la fonction add : ", todos)    
-    return redirect(url_for('add', recup_value = recup_value)) 
+    return redirect(url_for('add', todos = todos)) 
     
     
 
@@ -141,8 +141,8 @@ def add():
 
         
         #Permet d'être rediriger vers une autre fonction Python
-        #return redirect(url_for('client_description')), todos
-        return redirect(url_for('client_description'))#, todos
+        
+        return redirect(url_for('client_description'))
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 

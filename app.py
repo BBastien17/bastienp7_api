@@ -1,4 +1,4 @@
-
+!
 #from crypt import methods
 #Librairies pour faire les tests avec unittest
 # Librairies pour faire les tests avec unittest
@@ -120,18 +120,29 @@ todos = {}
 def index():
     return render_template('dashboard.html', todos=todos)
 
+def saved_id():
+    todos.clear()
+    index = len(todos) + 1
+    recup_value = request.form.get("id_client")
+    todos[index] = recup_value
+    print("Voici la variable todos[index] : ", todos[index])
+    print("Voici la variable todos dans la fonction add : ", todos)    
+    return redirect(url_for('add', recup_value = recup_value)) 
+    
+    
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        #todos = {}
-        #todos.clear()
-        index = len(todos) + 1
-        todos[index] = request.form.get("id_client")
-        print("Voici la variable todos[index] : ", todos[index])
-        print("Voici la variable todos dans la fonction add : ", todos)
+        recup_value = request.args['recup_value']
+        todos['recup_value'] = recup_value
+        print("Voici la variable recup_value : ", recup_value)
+
+
+        
         #Permet d'être rediriger vers une autre fonction Python
-        return redirect(url_for('client_description')), todos
+        #return redirect(url_for('client_description')), todos
+        return redirect(url_for('client_description'))#, todos
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 

@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 #from application import create_app
 import pickle
-from sklearn.linear_model import LinearRegression
+
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
@@ -22,6 +22,8 @@ model3 = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsa
                       colsample_bytree=0.6, random_state=42)
 #with open("./xgb_model_final/model.pkl", "rb") as file:
 #  model = pickle.load(file)
+with open(f'xgb_model_final/model.pkl', 'rb') as f:
+  model = pickle.load(f)
 
 #Importation des infos clients
 data_work_complet = pd.read_csv("./data_work.csv")
@@ -80,7 +82,6 @@ def calc_score_predictproba (ref_client, data_work_complet):
         X_test[col] = encoder.fit_transform(X_test[col])
     print("X_train_transform : ", X_train.head())
     print("X_test_transform : ", X_test.head())
-    model=LinearRegression()
     #Entrainement du modèle
     model.fit(X_train, y_train)
     print("X_train_fit : ", X_train.head())

@@ -47,11 +47,13 @@ def calc_score_predictproba (ref_client, data_work_complet):
     
     #On transforme ensuite le dictionnaire en dataframe
     data_work_list_result = pd.DataFrame(data=list_result_work)
+    print("Conversion du dictionnaire en dataframe des caractéristiques client : ", data_work_list_result)
     #On oublie pas de préparer la transformation des variables catégorielles en variables numériques plus tard
     transf_data_work_categ = {'Prêts de trésorerie': 0, 'Prêts renouvelables': 1,
                               'autre': 0, 'célibataire': 1, 'marié(e)': 2,
                               'M': 1, 'F': 0,
                               '3 à 4': 0, '5 à 8': 1}    
+    print("conversion des variables en variables numériques : ", transf_data_work_categ)
     #Découpage des datasets en dataset de train et de test (proportion 80/20)
     X_train, X_test, y_train, y_test = train_test_split(data_work_complet, data_target_complet, test_size = 0.2, random_state=42)
     #Librairie pour encoder des variables catégorielles
@@ -62,6 +64,7 @@ def calc_score_predictproba (ref_client, data_work_complet):
     X_train['Delai_anticipation_pret'] = X_train['Delai_anticipation_pret'].mul(-1)
     #Création d'une variable avec la liste des colonnes catégorielles du dataset features
     data_categ = list(data_work_complet.select_dtypes(exclude=["number"]).columns)
+    print("affichage de data_categ : ", data_categ)
     #Encodage des variables catégorielles
     for col in data_categ:
         X_train[col] = encoder.fit_transform(X_train[col])
@@ -73,6 +76,7 @@ def calc_score_predictproba (ref_client, data_work_complet):
     print("Voici le dataset après transformation des variables catégorielles en numériques : ", data_work_list_result_transf)
     #Prédiction du résultat
     score = model.predict_proba(data_work_list_result_transf)
+    print("affichage du score : ", score)
     return score
     
 class UneClasseDeTest(unittest.TestCase):

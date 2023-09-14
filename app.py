@@ -11,14 +11,17 @@ from flask import Flask, render_template, redirect, request, url_for
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 #from application import create_app
+
 #Importation du modèle mlflow
 path = 'Projet_7/'
 model = mlflow.sklearn.load_model('xgb_model_final/')
+
 #Importation des infos clients
 data_work_complet = pd.read_csv("./data_work.csv")
 print(data_work_complet.head())
 data_target_complet = pd.read_csv("./data_target.csv")
 print(data_target_complet.head())
+
 #Fonction pour calculer le score prédictproba du client
 def calc_score_predictproba (ref_client, data_work_complet):
     print("Lancement de la fonction calc_score_predictproba")
@@ -67,10 +70,11 @@ def calc_score_predictproba (ref_client, data_work_complet):
     model.fit(X_train, y_train)
     #On transforme les variables catégorielles en variables numériques
     data_work_list_result_transf = data_work_list_result.replace(transf_data_work_categ)
-    print(data_work_list_result_transf)
+    print("Voici le dataset après transformation des variables catégorielles en numériques : ", data_work_list_result_transf)
     #Prédiction du résultat
     score = model.predict_proba(data_work_list_result_transf)
     return score
+    
 class UneClasseDeTest(unittest.TestCase):
     def test_is_sourcefile_when_sourcefile(self):
         path = Mock()
@@ -96,9 +100,11 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 todos = {}
+
 @app.get("/")
 def index():
     return render_template('dashboard.html', todos=todos)
+    
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
@@ -144,6 +150,7 @@ def client_description():
     if request.method == 'POST':
         return redirect(url_for('index'))
     return render_template('client_description.html', value=ref_client, score=score_client_accept)
+    
 if __name__ == '__main__':
     #flask_app = create_app(debug=False)
     print("hello")

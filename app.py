@@ -12,12 +12,15 @@ from flask import Flask, render_template, redirect, request, url_for
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 #from application import create_app
+import pickle
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
 model2 = mlflow.sklearn.load_model('./xgb_model_final_saved/')
-model = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsample=0.9,
+model3 = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsample=0.9,
                       colsample_bytree=0.6, random_state=42)
+with open("./xgb_model_final/model.pkl", "rb") as file:
+  model = pickle.load(file)
 
 #Importation des infos clients
 data_work_complet = pd.read_csv("./data_work.csv")

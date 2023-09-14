@@ -13,8 +13,8 @@ import joblib
 import mlflow.sklearn
 #Librairie pour XGBoostClassifier
 from xgboost import XGBClassifier
-import lime
-from lime import lime_tabular
+#import lime
+#from lime import lime_tabular
 from sklearn.model_selection import train_test_split
 #import pickle
 #import pickle5 as pickle

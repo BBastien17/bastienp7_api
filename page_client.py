@@ -13,8 +13,6 @@ from sklearn.metrics import classification_report, confusion_matrix
 import mlflow.sklearn
 from xgboost import XGBClassifier
 import shap
-import lime
-from lime import lime_tabular
 from sklearn.model_selection import train_test_split
 import streamlit.components.v1 as components
 #import pickle

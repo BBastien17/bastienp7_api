@@ -22,7 +22,7 @@ model3 = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsa
                       colsample_bytree=0.6, random_state=42)
 #with open("./xgb_model_final/model.pkl", "rb") as file:
 #  model = pickle.load(file)
-with open(f'xgb_model_final/model.pkl', 'rb') as f:
+with open(f'xgb_model_final_saved/model.pkl', 'rb') as f:
   model = pickle.load(f)
 
 #Importation des infos clients

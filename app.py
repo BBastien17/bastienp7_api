@@ -107,10 +107,7 @@ app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 todos = {}
 
 @app.get("/")
-def index():
-    if request.method == 'POST':
-        print("Lancement du Dashboard de simulation")
-        return redirect(url_for('dashboard.py'))     
+def index():     
     return render_template('dashboard.html', todos=todos)
     
 @app.route('/add', methods = ['GET', 'POST'])
@@ -144,7 +141,12 @@ def client_description():
     if request.method == 'POST':
         return redirect(url_for('index'))
     return render_template('client_description.html', value=ref_client, score=score_client_accept)
-    
+
+@app.route('/add', methods = ['GET', 'POST'])
+def dashboard():
+    print("Lancement du Dashboard de simulation")
+    return redirect(url_for('client_description'))
+
 if __name__ == '__main__':
     print("hello")
     #unittest.main()

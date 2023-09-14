@@ -14,7 +14,7 @@ from sklearn.preprocessing import LabelEncoder
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
-model = mlflow.sklearn.load_model('./xgb_model_final/')
+model = mlflow.sklearn.load_model('./xgb_model_final_saved/')
 
 #Importation des infos clients
 data_work_complet = pd.read_csv("./data_work.csv")

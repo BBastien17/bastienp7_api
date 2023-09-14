@@ -15,8 +15,8 @@ from xgboost import XGBClassifier
 import shap
 from sklearn.model_selection import train_test_split
 import streamlit.components.v1 as components
-#import pickle
-import pickle5 as pickle
+import pickle
+
 
 #Importation du modèle mlflow
 path = 'Projet_7/'

@@ -6,7 +6,7 @@ from xgboost import sklearn
 from xgboost import XGBClassifier
 import mlflow.sklearn
 import pandas as pd
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, send_file
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import pickle

@@ -20,7 +20,8 @@ import pickle
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
-model = mlflow.sklearn.load_model('xgb_model_final/')
+with open(f'xgb_model_final/model.pkl', 'rb') as f:
+  model = pickle.load(f)
 #Importation des pickles enregistrés
 #load_fichierSauvegarde = open("shap_model_X_train", "rb")
 #shap_values_1 = pickle.load(load_fichierSauvegarde)

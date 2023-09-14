@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 #from application import create_app
 import pickle
+from sklearn.linear_model import LinearRegression
 
 #Importation du modèle mlflow
 path = 'Projet_7/'

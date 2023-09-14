@@ -10,6 +10,7 @@ from flask import Flask, render_template, redirect, request, url_for, send_file
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import pickle
+import subprocess
 
 
 #Importation du modèle mlflow
@@ -146,7 +147,7 @@ def client_description():
 def dashboard():
     print("Lancement du Dashboard de simulation")
     #return send_file(dashboard)
-    dashboard.py.run()
+    subprocess.run(["python", "./dashboard.py"])
 
 if __name__ == '__main__':
     print("hello")

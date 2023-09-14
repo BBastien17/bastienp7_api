@@ -79,7 +79,7 @@ def calc_score_predictproba (ref_client, data_work_complet):
         X_test[col] = encoder.fit_transform(X_test[col])
     print("X_train_transform : ", X_train.head())
     print("X_test_transform : ", X_test.head())
-    model=XGBClassifier()
+    model=LinearRegression()
     #Entrainement du modèle
     model.fit(X_train, y_train)
     print("X_train_fit : ", X_train.head())

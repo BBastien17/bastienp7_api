@@ -115,8 +115,8 @@ def add():
 
 
 @app.route('/client_description', methods = ['GET', 'POST'])
-def client_description():
-#def client_description(todos):
+#def client_description():
+def client_description(todos):
 
     #detail_add, name = add()
     print("id_get_client est : ", todos)

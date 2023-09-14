@@ -22,7 +22,7 @@ model3 = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsa
                       colsample_bytree=0.6, random_state=42)
 #with open("./xgb_model_final/model.pkl", "rb") as file:
 #  model = pickle.load(file)
-with open(f'xgb_model_final_saved/model.pkl', 'rb') as f:
+with open(f'xgb_model_final/model.pkl', 'rb') as f:
   model = pickle.load(f)
 
 #Importation des infos clients
@@ -83,9 +83,9 @@ def calc_score_predictproba (ref_client, data_work_complet):
     print("X_train_transform : ", X_train.head())
     print("X_test_transform : ", X_test.head())
     #Entrainement du modèle
-    model.fit(X_train, y_train)
-    print("X_train_fit : ", X_train.head())
-    print("y_train_fit : ", y_train.head())
+    #model.fit(X_train, y_train)
+    #print("X_train_fit : ", X_train.head())
+    #print("y_train_fit : ", y_train.head())
     #On transforme les variables catégorielles en variables numériques
     data_work_list_result_transf = data_work_list_result.replace(transf_data_work_categ)
     print("Voici le dataset après transformation des variables catégorielles en numériques : ", data_work_list_result_transf)

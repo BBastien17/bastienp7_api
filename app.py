@@ -1,5 +1,3 @@
-#from crypt import methods
-#Librairies pour faire les tests avec unittest
 # Librairies pour faire les tests avec unittest
 import unittest
 from unittest.mock import Mock
@@ -11,17 +9,11 @@ import pandas as pd
 from flask import Flask, render_template, redirect, request, url_for
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-#from application import create_app
 import pickle
 
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
-model2 = mlflow.sklearn.load_model('./xgb_model_final_saved/')
-model3 = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsample=0.9,
-                      colsample_bytree=0.6, random_state=42)
-#with open("./xgb_model_final/model.pkl", "rb") as file:
-#  model = pickle.load(file)
 with open(f'xgb_model_final/model.pkl', 'rb') as f:
   model = pickle.load(f)
 
@@ -37,8 +29,6 @@ def calc_score_predictproba (ref_client, data_work_complet):
     #Création d'un dataframe avec les information du client sélectionné :
     data_work_client = pd.DataFrame(data_work_complet,index=[ref_client])
     print(data_work_client)
-    #A vérifier si ligne en dessous utile ou non car sert justepour avoir la variable target
-    #data_work_target_client = pd.DataFrame(data_target,index=[ref_client])
     #Création du dictionnaire où l'on stocke les résultats
     list_result_work = {'Type_de_pret':data_work_client['Type_de_pret'], 'Genre':data_work_client['Genre'],
                         'Age':data_work_client['Age'], 'Niveau_d_etudes':data_work_client['Niveau_d_etudes'],
@@ -82,10 +72,6 @@ def calc_score_predictproba (ref_client, data_work_complet):
         X_test[col] = encoder.fit_transform(X_test[col])
     print("X_train_transform : ", X_train.head())
     print("X_test_transform : ", X_test.head())
-    #Entrainement du modèle
-    #model.fit(X_train, y_train)
-    #print("X_train_fit : ", X_train.head())
-    #print("y_train_fit : ", y_train.head())
     #On transforme les variables catégorielles en variables numériques
     data_work_list_result_transf = data_work_list_result.replace(transf_data_work_categ)
     print("Voici le dataset après transformation des variables catégorielles en numériques : ", data_work_list_result_transf)
@@ -141,21 +127,7 @@ def add():
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-#def client_description(todos):
-
-    #detail_add, name = add()
-    print("id_get_client est : ")
-    #print("detail_add est : ", detail_add)
-    #todos = {}
-    #todos.clear()
-    #print("taille de la variable todos avant operation : ", len(todos))
-    #index = len(todos) + 1
-    #todos[index] = id_get_client 
-    print("Lancement de la page client_description")
-    #print("voici todos avant forcage : ", todos)
     todos = {1: '2'}
-    #print(list(todos))
-    #dict_key_select = list(todos)[-1]
     dict_key_select = list(todos)[0]
     print("Voici la variable dict_key_select : ", dict_key_select)
     ref_client = todos[dict_key_select]
@@ -171,10 +143,9 @@ def client_description():
     return render_template('client_description.html', value=ref_client, score=score_client_accept)
     
 if __name__ == '__main__':
-    #flask_app = create_app(debug=False)
     print("hello")
     #unittest.main()
-    #app.run(debug=False, host="0.0.0.0", port=8080)
     app.run(debug=False)
+    #Pour le fonctionnement en local
     #app.run(debug=True)
-    #flask_app.run()
+

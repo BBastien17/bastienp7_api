@@ -12,6 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 import subprocess
 import streamlit
+from streamlit import runtime
 
 
 #Importation du modèle mlflow
@@ -148,7 +149,8 @@ def client_description():
 def dashboard():
     print("Lancement du Dashboard de simulation")
     #return send_file(dashboard)
-    streamlit.run(dashboard.py)
+    #streamlit.run(dashboard.py)
+    runtime.dashboard()
     #subprocess.run(["python", "./dashboard.py"])
 
 if __name__ == '__main__':

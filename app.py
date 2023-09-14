@@ -145,7 +145,7 @@ def client_description():
 @app.route('/add', methods = ['GET', 'POST'])
 def dashboard():
     print("Lancement du Dashboard de simulation")
-    return redirect(url_for('client_description'))
+    return send_file(dashboard.py)
 
 if __name__ == '__main__':
     print("hello")

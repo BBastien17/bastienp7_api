@@ -123,7 +123,7 @@ def client_description():
     #print("detail_add est : ", detail_add)
     #todos = {}
     #todos.clear()
-    print("taille de la variable todos avant operation : ", len(todos))
+    #print("taille de la variable todos avant operation : ", len(todos))
     #index = len(todos) + 1
     #todos[index] = id_get_client 
     print("Lancement de la page client_description")

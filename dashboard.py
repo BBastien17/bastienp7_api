@@ -48,8 +48,8 @@ st.sidebar.image("images/logo2.png", width=100)
 path = 'Projet_7/'
 
 #Import des données clients
-data_work = pd.read_csv(".data_work.csv")
-data_target = pd.read_csv(".data_target.csv")
+data_work = pd.read_csv("./data_work.csv")
+data_target = pd.read_csv("./data_target.csv")
 data_complete = data_work.copy()
 data_complete["Target"] = data_target
 

@@ -5,6 +5,7 @@ import unittest
 from unittest.mock import Mock
 import xgboost.sklearn
 from xgboost import sklearn
+from xgboost import XGBClassifier
 import mlflow.sklearn
 import pandas as pd
 from flask import Flask, render_template, redirect, request, url_for

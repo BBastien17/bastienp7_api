@@ -108,6 +108,9 @@ todos = {}
 
 @app.get("/")
 def index():
+    if request.method == 'POST':
+        print("Lancement du Dashboard de simulation")
+        return redirect(url_for('dashboard.py'))     
     return render_template('dashboard.html', todos=todos)
     
 @app.route('/add', methods = ['GET', 'POST'])

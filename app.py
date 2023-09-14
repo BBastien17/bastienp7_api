@@ -147,7 +147,7 @@ def client_description():
 def dashboard():
     print("Lancement du Dashboard de simulation")
     #return send_file(dashboard)
-    streamlit run ./dashboard.py
+    streamlit.run(./dashboard.py)
     #subprocess.run(["python", "./dashboard.py"])
 
 if __name__ == '__main__':

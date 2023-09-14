@@ -142,7 +142,7 @@ def client_description():
         return redirect(url_for('index'))
     return render_template('client_description.html', value=ref_client, score=score_client_accept)
 
-@app.route('/add', methods = ['GET', 'POST'])
+@app.route('/dashboard', methods = ['GET', 'POST'])
 def dashboard():
     print("Lancement du Dashboard de simulation")
     return send_file(dashboard.py)

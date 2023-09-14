@@ -146,7 +146,7 @@ def client_description():
 def dashboard():
     print("Lancement du Dashboard de simulation")
     #return send_file(dashboard)
-    dashboard.run()
+    dashboard.py.run()
 
 if __name__ == '__main__':
     print("hello")

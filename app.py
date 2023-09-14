@@ -19,8 +19,8 @@ path = 'Projet_7/'
 model2 = mlflow.sklearn.load_model('./xgb_model_final_saved/')
 model3 = XGBClassifier(max_depth=5, learning_rate=0.086, n_estimators=600, subsample=0.9,
                       colsample_bytree=0.6, random_state=42)
-with open("./xgb_model_final/model.pkl", "rb") as file:
-  model = pickle.load(file)
+#with open("./xgb_model_final/model.pkl", "rb") as file:
+#  model = pickle.load(file)
 
 #Importation des infos clients
 data_work_complet = pd.read_csv("./data_work.csv")
@@ -71,12 +71,19 @@ def calc_score_predictproba (ref_client, data_work_complet):
     #Création d'une variable avec la liste des colonnes catégorielles du dataset features
     data_categ = list(data_work_complet.select_dtypes(exclude=["number"]).columns)
     print("affichage de data_categ : ", data_categ)
+    print("X_train : ", X_train.head())
+    print("X_test : ", X_test.head())
     #Encodage des variables catégorielles
     for col in data_categ:
         X_train[col] = encoder.fit_transform(X_train[col])
         X_test[col] = encoder.fit_transform(X_test[col])
+    print("X_train_transform : ", X_train.head())
+    print("X_test_transform : ", X_test.head())
+    model=XGBClassifier()
     #Entrainement du modèle
     model.fit(X_train, y_train)
+    print("X_train_fit : ", X_train.head())
+    print("y_train_fit : ", y_train.head())
     #On transforme les variables catégorielles en variables numériques
     data_work_list_result_transf = data_work_list_result.replace(transf_data_work_categ)
     print("Voici le dataset après transformation des variables catégorielles en numériques : ", data_work_list_result_transf)

@@ -1,4 +1,3 @@
-!
 #from crypt import methods
 #Librairies pour faire les tests avec unittest
 # Librairies pour faire les tests avec unittest
@@ -12,7 +11,6 @@ from flask import Flask, render_template, redirect, request, url_for
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 #from application import create_app
-
 #Importation du modèle mlflow
 path = 'Projet_7/'
 model = mlflow.sklearn.load_model('xgb_model_final/')
@@ -21,8 +19,6 @@ data_work_complet = pd.read_csv("./data_work.csv")
 print(data_work_complet.head())
 data_target_complet = pd.read_csv("./data_target.csv")
 print(data_target_complet.head())
-
-
 #Fonction pour calculer le score prédictproba du client
 def calc_score_predictproba (ref_client, data_work_complet):
     print("Lancement de la fonction calc_score_predictproba")
@@ -55,7 +51,6 @@ def calc_score_predictproba (ref_client, data_work_complet):
                               '3 à 4': 0, '5 à 8': 1}    
     #Découpage des datasets en dataset de train et de test (proportion 80/20)
     X_train, X_test, y_train, y_test = train_test_split(data_work_complet, data_target_complet, test_size = 0.2, random_state=42)
-
     #Librairie pour encoder des variables catégorielles
     encoder = LabelEncoder()
     #On remet la variable concernant une période sous un format positif
@@ -70,86 +65,60 @@ def calc_score_predictproba (ref_client, data_work_complet):
         X_test[col] = encoder.fit_transform(X_test[col])
     #Entrainement du modèle
     model.fit(X_train, y_train)
-
     #On transforme les variables catégorielles en variables numériques
     data_work_list_result_transf = data_work_list_result.replace(transf_data_work_categ)
     print(data_work_list_result_transf)
     #Prédiction du résultat
     score = model.predict_proba(data_work_list_result_transf)
     return score
-
 class UneClasseDeTest(unittest.TestCase):
-
     def test_is_sourcefile_when_sourcefile(self):
         path = Mock()
         path.is_file.return_value = True
         path.suffix = ".py"
-
         resultat = is_sourcefile(path)
-
         self.assertTrue(resultat)
         path.is_file.assert_called()
-
     def test_is_sourcefile_when_file_does_not_exist(self):
         path = Mock()
         path.is_file.return_value = False
-
         with self.assertRaises(Exception):
             is_sourcefile(path)
-
         path.is_file.assert_called()
-
     def test_is_sourcefile_when_not_expected_suffix(self):
         path = Mock()
         path.is_file.return_value = True
         path.suffix = ".txt"
-
         resultat = is_sourcefile(path)
-
         self.assertFalse(resultat)
         path.is_file.assert_called()
-
-
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
-
 todos = {}
-
 @app.get("/")
 def index():
     return render_template('dashboard.html', todos=todos)
-
-def saved_id():
-    todos.clear()
-    index = len(todos) + 1
-    recup_value = request.form.get("id_client")
-    todos[index] = recup_value
-    print("Voici la variable todos[index] : ", todos[index])
-    print("Voici la variable todos dans la fonction add : ", todos)    
-    return redirect(url_for('add', todos = todos)) 
-    
-    
-
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        recup_value = request.args['recup_value']
-        todos['recup_value'] = recup_value
-        print("Voici la variable recup_value : ", recup_value)
-
-
-        
+        #todos = {}
+        #todos.clear()
+        index = len(todos) + 1
+        todos[index] = request.form.get("id_client")
+        print("Voici la variable todos[index] : ", todos[index])
+        print("Voici la variable todos dans la fonction add : ", todos)
         #Permet d'être rediriger vers une autre fonction Python
-        
-        return redirect(url_for('client_description'))
+        return redirect(url_for('client_description')), todos
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    
+#def client_description(todos):
+
+    #detail_add, name = add()
     print("id_get_client est : ", todos)
     #print("detail_add est : ", detail_add)
     #todos = {}
@@ -175,10 +144,7 @@ def client_description():
     if request.method == 'POST':
         return redirect(url_for('index'))
     return render_template('client_description.html', value=ref_client, score=score_client_accept)
-
-
 if __name__ == '__main__':
-
     #flask_app = create_app(debug=False)
     print("hello")
     #unittest.main()

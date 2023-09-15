@@ -113,32 +113,32 @@ todos = {}
 def index():     
     return render_template('dashboard.html', todos=todos)
 
-def test():
-    index = len(todos) + 1
-    todos[index] = request.form.get("id_client")
-    print("Voici la variable todos[index] : ", todos[index])
-    print("Voici la variable todos dans la fonction add : ", todos)
-    new_todos = todos
-    print("Variable new_todos : ", new_todos)
-    return new_todos
+#def test():
+#    index = len(todos) + 1
+#    todos[index] = request.form.get("id_client")
+#    print("Voici la variable todos[index] : ", todos[index])
+#    print("Voici la variable todos dans la fonction add : ", todos)
+#    new_todos = todos
+#    print("Variable new_todos : ", new_todos)
+#    return new_todos
 
-testing=test()
-print("Affichage testing : ", testing)
+#testing=test()
+#print("Affichage testing : ", testing)
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
         #todos = {}
         #todos.clear()
-        #index = len(todos) + 1
-        #todos[index] = request.form.get("id_client")
-        #print("Voici la variable todos[index] : ", todos[index])
-        #print("Voici la variable todos dans la fonction add : ", todos)
-        #new_todos = todos
-        #print("Variable new_todos : ", new_todos)
+        index = len(todos) + 1
+        todos[index] = request.form.get("id_client")
+        print("Voici la variable todos[index] : ", todos[index])
+        print("Voici la variable todos dans la fonction add : ", todos)
+        new_todos = todos
+        print("Variable new_todos : ", new_todos)
         #Permet d'être rediriger vers une autre fonction Python
-        test()
-        return redirect(url_for('client_description'))
+        #test()
+        return redirect(url_for('client_description', id_client))
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 

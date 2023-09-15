@@ -122,15 +122,18 @@ def add():
         todos[index] = request.form.get("id_client")
         print("Voici la variable todos[index] : ", todos[index])
         print("Voici la variable todos dans la fonction add : ", todos)
+        new_todos = todos
+        print("Variable new_todos : ", new_todos)
         #Permet d'être rediriger vers une autre fonction Python
-        return redirect(url_for('client_description')), todos
+        return redirect(url_for('client_description')), new_todos
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    todos = {1: '2'}
+  
+    todos = new_todos
     dict_key_select = list(todos)[0]
     print("Voici la variable dict_key_select : ", dict_key_select)
     ref_client = todos[dict_key_select]
@@ -140,7 +143,7 @@ def client_description():
     score_client = calc_score_predictproba(ref_client, data_work_complet)
     print("Voici la variable score_client : ", score_client)
     score_client_accept = round(score_client[0][0], 3)
-    print("Voici la variable score_client_accept : ", score_client_accept)
+    print("Voici la variable score_client_accepté : ", score_client_accept)
     if request.method == 'POST':
         return redirect(url_for('index'))
     return render_template('client_description.html', value=ref_client, score=score_client_accept)

@@ -134,22 +134,7 @@ def page_p (data_work, data_target, data_complete) :
     predict_btn = st.button('Résultat de la demande de financement', key = "prospects_button")
     if predict_btn:
         
-        #Découpage des datasets en dataset de train et de test (proportion 80/20)
-        X_train, X_test, y_train, y_test = train_test_split(data_work, data_target, test_size = 0.2, random_state=42)
-        #Librairie pour encoder des variables catégorielles
-        encoder = LabelEncoder()
-        #On remet la variable concernant une période sous un format positif
-        X_test['Delai_anticipation_pret'] = X_test['Delai_anticipation_pret'].mul(-1)
-        #On remet la variable concernant une période sous un format positif
-        X_train['Delai_anticipation_pret'] = X_train['Delai_anticipation_pret'].mul(-1)
-        #Création d'une variable avec la liste des colonnes catégorielles du dataset features
-        data_categ = list(data_work.select_dtypes(exclude=["number"]).columns)
-        #Encodage des variables catégorielles
-        for col in data_categ:
-            X_train[col] = encoder.fit_transform(X_train[col])
-            X_test[col] = encoder.fit_transform(X_test[col])
-        #Entrainement du modèle
-        #model.fit(X_train, y_train)
+        
 
         #On transforme les variables catégorielles en variables numériques
         data_list_result_transf = data_list_result.replace(transf_data_categ)

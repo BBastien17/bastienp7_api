@@ -55,7 +55,8 @@ data_complete["Target"] = data_target
 
 #Import du modèle XGBClassifier
 xgb = XGBClassifier()
-model = mlflow.sklearn.load_model('xgb_model_final/')
+with open(f'xgb_model_final/model.pkl', 'rb') as f:
+  model = pickle.load(f)
 
 #Appel de la page correspondante en fonction du choix réalisé dans le menu déroulant
 if page == "Prospects": 

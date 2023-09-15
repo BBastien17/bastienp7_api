@@ -1,2 +1,2 @@
 web: gunicorn app:app
-streamlit: sh setup.sh && streamlit run ./dashboard.py --server.port=$PORT
+web: sh setup.sh && streamlit run ./dashboard.py --server.port=$PORT

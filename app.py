@@ -115,12 +115,12 @@ def index():
 
 def test():
     index = len(todos) + 1
-      todos[index] = request.form.get("id_client")
-      print("Voici la variable todos[index] : ", todos[index])
-      print("Voici la variable todos dans la fonction add : ", todos)
-      new_todos = todos
-      print("Variable new_todos : ", new_todos)
-      return new_todos
+    todos[index] = request.form.get("id_client")
+    print("Voici la variable todos[index] : ", todos[index])
+    print("Voici la variable todos dans la fonction add : ", todos)
+    new_todos = todos
+    print("Variable new_todos : ", new_todos)
+    return new_todos
 
 testing=test()
 print("Affichage testing : ", testing)

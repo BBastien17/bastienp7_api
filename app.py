@@ -125,15 +125,15 @@ def add():
         new_todos = todos
         print("Variable new_todos : ", new_todos)
         #Permet d'être rediriger vers une autre fonction Python
-        return redirect(url_for('client_description')), new_todos
+        return [redirect(url_for('client_description')), new_todos]
     #Permet d'être rediriger vers une autre page html
-    return render_template('add.html'), new_todos
+    return render_template('add.html')
 
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-  
-    todos = new_todos
+    x, y = add()
+    todos = y
     print("Variable new_todos de client_description : ", new_todos)
     dict_key_select = list(todos)[0]
     print("Voici la variable dict_key_select : ", dict_key_select)

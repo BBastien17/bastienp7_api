@@ -138,7 +138,7 @@ def add():
         print("Variable new_todos : ", new_todos)
         #Permet d'être rediriger vers une autre fonction Python
         #test()
-        return redirect(url_for('client_description')), "id_client"
+        return redirect(url_for('client_description')), id_client
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 

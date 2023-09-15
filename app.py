@@ -134,6 +134,7 @@ def add():
 def client_description():
   
     todos = new_todos
+    print("Variable new_todos de client_description : ", new_todos)
     dict_key_select = list(todos)[0]
     print("Voici la variable dict_key_select : ", dict_key_select)
     ref_client = todos[dict_key_select]

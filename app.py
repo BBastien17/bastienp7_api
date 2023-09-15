@@ -150,8 +150,8 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     #return send_file(dashboard)
     #streamlit.run(dashboard.py)
-    runtime.exists(dashboard)
-    #subprocess.run(["python", "./dashboard.py"])
+    #runtime.exists(dashboard)
+    subprocess.run(["python", "./dashboard.py"])
 
 if __name__ == '__main__':
     print("hello")

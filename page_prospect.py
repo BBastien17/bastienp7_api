@@ -149,7 +149,7 @@ def page_p (data_work, data_target, data_complete) :
             X_train[col] = encoder.fit_transform(X_train[col])
             X_test[col] = encoder.fit_transform(X_test[col])
         #Entrainement du modèle
-        model.fit(X_train, y_train)
+        #model.fit(X_train, y_train)
 
         #On transforme les variables catégorielles en variables numériques
         data_list_result_transf = data_list_result.replace(transf_data_categ)

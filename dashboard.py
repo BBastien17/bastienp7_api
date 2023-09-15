@@ -23,6 +23,7 @@ import pickle
 from page_prospect import page_p
 from page_client import page_c
 
+print("Ouverture de la page dashboard.py)
 
 def request_prediction(model_uri, data):
     headers = {"Content-Type": "application/json"}

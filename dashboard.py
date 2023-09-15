@@ -6,8 +6,8 @@ import numpy as np
 import requests
 
 #Importation des fonctions contenants les pages
-#from page_prospect import page_p
-#from page_client import page_c
+from page_prospect import page_p
+from page_client import page_c
 
 print("Ouverture de la page dashboard.py")
 
@@ -41,9 +41,9 @@ data_complete = data_work.copy()
 data_complete["Target"] = data_target
 
 #Appel de la page correspondante en fonction du choix réalisé dans le menu déroulant
-#if page == "Prospects": 
-#    page_p(data_work, data_target, data_complete)
+if page == "Prospects": 
+    page_p(data_work, data_target, data_complete)
     
-#if page == "Clients":
-#    page_c(data_work, data_target, data_complete)
+if page == "Clients":
+    page_c(data_work, data_target, data_complete)
     

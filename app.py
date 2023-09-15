@@ -112,29 +112,42 @@ todos = {}
 @app.get("/")
 def index():     
     return render_template('dashboard.html', todos=todos)
-    
+
+def test():
+    index = len(todos) + 1
+      todos[index] = request.form.get("id_client")
+      print("Voici la variable todos[index] : ", todos[index])
+      print("Voici la variable todos dans la fonction add : ", todos)
+      new_todos = todos
+      print("Variable new_todos : ", new_todos)
+      return new_todos
+
+testing=test()
+print("Affichage testing : ", testing)
+
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
         #todos = {}
         #todos.clear()
-        index = len(todos) + 1
-        todos[index] = request.form.get("id_client")
-        print("Voici la variable todos[index] : ", todos[index])
-        print("Voici la variable todos dans la fonction add : ", todos)
-        new_todos = todos
-        print("Variable new_todos : ", new_todos)
+        #index = len(todos) + 1
+        #todos[index] = request.form.get("id_client")
+        #print("Voici la variable todos[index] : ", todos[index])
+        #print("Voici la variable todos dans la fonction add : ", todos)
+        #new_todos = todos
+        #print("Variable new_todos : ", new_todos)
         #Permet d'être rediriger vers une autre fonction Python
-        return [redirect(url_for('client_description')), new_todos]
+        test()
+        return redirect(url_for('client_description'))
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
 
+
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
-    x, y = add()
-    todos = y
     print("Variable new_todos de client_description : ", new_todos)
+    todos = new_todos
     dict_key_select = list(todos)[0]
     print("Voici la variable dict_key_select : ", dict_key_select)
     ref_client = todos[dict_key_select]

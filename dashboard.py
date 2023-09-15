@@ -59,9 +59,9 @@ with open(f'xgb_model_final/model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 #Appel de la page correspondante en fonction du choix réalisé dans le menu déroulant
-if page == "Prospects": 
-    page_p(data_work, data_target, data_complete)
+#if page == "Prospects": 
+#    page_p(data_work, data_target, data_complete)
     
-if page == "Clients":
-    page_c(data_work, data_target, data_complete)
+#if page == "Clients":
+#    page_c(data_work, data_target, data_complete)
     

@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import pickle
 import subprocess
-import streamlit
+import streamlit as st
 from streamlit import runtime
 
 
@@ -150,7 +150,7 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     #return send_file(dashboard)
     #streamlit.run(dashboard.py)
-    runtime.dashboard()
+    runtime.exists(dashboard)
     #subprocess.run(["python", "./dashboard.py"])
 
 if __name__ == '__main__':

@@ -127,7 +127,7 @@ def add():
         #Permet d'être rediriger vers une autre fonction Python
         return redirect(url_for('client_description')), new_todos
     #Permet d'être rediriger vers une autre page html
-    return render_template('add.html')
+    return render_template('add.html'), new_todos
 
 
 @app.route('/client_description', methods = ['GET', 'POST'])

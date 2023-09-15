@@ -136,9 +136,12 @@ def add():
         print("Voici la variable todos dans la fonction add : ", todos)
         new_todos = todos
         print("Variable new_todos : ", new_todos)
+        #Sauver le dictionnaire dans un fichier pickleve dictionary to person_data.pkl file
+        with open('dict_data.pkl', 'wb') as fp:
+            pickle.dump(new_todos, fp)
         #Permet d'être rediriger vers une autre fonction Python
         #test()
-        return redirect(url_for('client_description')), id_client
+        return redirect(url_for('client_description'))
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
@@ -146,6 +149,8 @@ def add():
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
+    with open('dict_data.pkl', 'rb') as fp:
+        new_todos = pickle.load(fp)
     print("Variable new_todos de client_description : ", new_todos)
     todos = new_todos
     dict_key_select = list(todos)[0]

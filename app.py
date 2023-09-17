@@ -14,6 +14,11 @@ import subprocess
 import streamlit as st
 from streamlit import runtime
 
+import mlflow
+
+mlflow.set_tracking_uri("file:///tmp/my_tracking")
+tracking_uri = mlflow.get_tracking_uri()
+print(f"Current tracking uri: {tracking_uri}")
 
 #Importation du modèle mlflow
 path = 'Projet_7/'

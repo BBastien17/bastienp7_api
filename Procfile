@@ -1,2 +1,3 @@
 web: gunicorn app:app
-worker: bundle exec streamlit run ./dashboard.py -e $RAILS_ENV
+web: sh setup.sh && streamlit run ./dashboard.py --server.port=$PORT
+

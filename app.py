@@ -110,6 +110,20 @@ class UneClasseDeTest(unittest.TestCase):
         resultat = is_sourcefile(path)
         self.assertFalse(resultat)
         path.is_file.assert_called()
+    def test_is_sourcefile_when_not_expected_suffix(self):
+        path = Mock()
+        path.is_file.return_value = True
+        path.suffix = ".pkl"
+        resultat = is_sourcefile(path)
+        self.assertFalse(resultat)
+        path.is_file.assert_called()
+    def test_is_sourcefile_when_not_expected_suffix(self):
+        path = Mock()
+        path.is_file.return_value = True
+        path.suffix = ".csv"
+        resultat = is_sourcefile(path)
+        self.assertFalse(resultat)
+        path.is_file.assert_called()
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
@@ -171,7 +185,7 @@ def dashboard():
 
 if __name__ == '__main__':
     print("hello")
-    #unittest.main()
+    unittest.main()
     app.run(debug=False)
     #Pour le fonctionnement en local
     #app.run(debug=True)

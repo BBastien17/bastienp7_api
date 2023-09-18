@@ -185,7 +185,9 @@ def dashboard():
 
 if __name__ == '__main__':
     print("hello")
-    unittest.main()
+    #unittest.main()
+    launch_unittest = unittest.main()
+    print("voici les résultats des tests unitaires : ", launch_unittest)
     app.run(debug=False)
     #Pour le fonctionnement en local
     #app.run(debug=True)

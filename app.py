@@ -32,7 +32,7 @@ os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
 
 mlflow.set_tracking_uri("https://bastienp7-api-64085d97a29c.herokuapp.com/")
 #Environnement virtuel
-mlflow.set_experiment("mlflow_video")
+#mlflow.set_experiment("mlflow_video")
 mlflow.autolog(disable=True)
 
 import mlflow

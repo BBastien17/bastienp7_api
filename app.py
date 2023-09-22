@@ -30,7 +30,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
 os.environ['MLFLOW_TRACKING_USERNAME'] = MLFLOW_TRACKING_USERNAME
 os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
 
-mlflow.set_tracking_url("https://bastienp7-api-64085d97a29c.herokuapp.com/")
+mlflow.set_tracking_uri("https://bastienp7-api-64085d97a29c.herokuapp.com/")
 #Environnement virtuel
 mlflow.set_experiment("mlflow_video")
 mlflow.autolog(disable=True)

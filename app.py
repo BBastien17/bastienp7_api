@@ -29,7 +29,8 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
 os.environ['MLFLOW_TRACKING_USERNAME'] = MLFLOW_TRACKING_USERNAME
 os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
 
-mlflow.set_tracking_url("http://IP:80")
+mlflow.set_tracking_url("http://35.188.168.164:80")
+#Environnement virtuel
 mlflow.set_experiment('mlflow_video")
 
 

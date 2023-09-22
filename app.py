@@ -1,4 +1,5 @@
-# Librairies pour faire les tests avec unittest
+ee.json'
+b# Librairies pour faire les tests avec unittest
 import unittest
 from unittest.mock import Mock
 import xgboost.sklearn
@@ -13,6 +14,24 @@ import pickle
 import subprocess
 import streamlit as st
 from streamlit import runtime
+#Librairies pour MLFLOW Tracking
+import os
+import logging
+
+logging.basicConfig(level=logging.WARN)
+logger = logging.getLogger(__name__)
+
+GOOGLE_APPLICATION_CREDENTIALS = 'test_fveloso-led6598e5b4e.json'
+MLFLOW_TRACKING_USERNAME = "user"
+MLFLOW_TRACKING_PASSWORD = "pass"
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
+os.environ['MLFLOW_TRACKING_USERNAME'] = MLFLOW_TRACKING_USERNAME
+os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
+
+mlflow.set_tracking_url("http://IP:80")
+mlflow.set_experiment('mlflow_video")
+
 
 import mlflow
 

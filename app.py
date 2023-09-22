@@ -25,21 +25,23 @@ GOOGLE_APPLICATION_CREDENTIALS = 'test_fveloso-led6598e5b4e.json'
 MLFLOW_TRACKING_USERNAME = "user"
 MLFLOW_TRACKING_PASSWORD = "pass"
 
+
+
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
 os.environ['MLFLOW_TRACKING_USERNAME'] = MLFLOW_TRACKING_USERNAME
 os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
 
-mlflow.set_tracking_url("http://35.188.168.164:80")
+mlflow.set_tracking_url("https://bastienp7-api-64085d97a29c.herokuapp.com/")
 #Environnement virtuel
 mlflow.set_experiment('mlflow_video")
-
+mlflow.autolog()
 
 import mlflow
 
 #mlflow.set_tracking_uri("file:///tmp/my_tracking")
-mlflow.set_tracking_uri("C:/Temp/my_tracking")
-tracking_uri = mlflow.get_tracking_uri()
-print(f"Current tracking uri: {tracking_uri}")
+#mlflow.set_tracking_uri("C:/Temp/my_tracking")
+#tracking_uri = mlflow.get_tracking_uri()
+#print(f"Current tracking uri: {tracking_uri}")
 
 #Importation du modèle mlflow
 path = 'Projet_7/'

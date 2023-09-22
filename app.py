@@ -21,20 +21,20 @@ import logging
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
-GOOGLE_APPLICATION_CREDENTIALS = 'test_fveloso-led6598e5b4e.json'
+#GOOGLE_APPLICATION_CREDENTIALS = 'test_fveloso-led6598e5b4e.json'
 MLFLOW_TRACKING_USERNAME = "user"
 MLFLOW_TRACKING_PASSWORD = "pass"
 
 
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
+#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
 os.environ['MLFLOW_TRACKING_USERNAME'] = MLFLOW_TRACKING_USERNAME
 os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
 
 mlflow.set_tracking_url("https://bastienp7-api-64085d97a29c.herokuapp.com/")
 #Environnement virtuel
 mlflow.set_experiment('mlflow_video")
-mlflow.autolog()
+mlflow.autolog(disable=True)
 
 import mlflow
 

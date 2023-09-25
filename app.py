@@ -16,32 +16,7 @@ import streamlit as st
 from streamlit import runtime
 #Librairies pour MLFLOW Tracking
 import os
-import logging
-
-logging.basicConfig(level=logging.WARN)
-logger = logging.getLogger(__name__)
-
-GOOGLE_APPLICATION_CREDENTIALS = 'test_fveloso-led6598e5b4e.json'
-MLFLOW_TRACKING_USERNAME = "user"
-MLFLOW_TRACKING_PASSWORD = "pass"
-
-
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GOOGLE_APPLICATION_CREDENTIALS
-os.environ['MLFLOW_TRACKING_USERNAME'] = MLFLOW_TRACKING_USERNAME
-os.environ['MLFLOW_TRACKING_PASSWORD'] = MLFLOW_TRACKING_PASSWORD
-
-mlflow.set_tracking_uri("https://bastienp7-api-64085d97a29c.herokuapp.com/")
-#Environnement virtuel
-#mlflow.set_experiment("mlflow_video")
-mlflow.autolog(disable=True)
-
 import mlflow
-
-#mlflow.set_tracking_uri("file:///tmp/my_tracking")
-#mlflow.set_tracking_uri("C:/Temp/my_tracking")
-#tracking_uri = mlflow.get_tracking_uri()
-#print(f"Current tracking uri: {tracking_uri}")
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
@@ -206,14 +181,10 @@ def client_description():
 @app.route('/dashboard', methods = ['GET', 'POST'])
 def dashboard():
     print("Lancement du Dashboard de simulation")
-    #return send_file(dashboard)
-    #streamlit.run(dashboard.py)
-    #runtime.exists(dashboard)
     subprocess.run(["python", "./dashboard.py"])
 
 if __name__ == '__main__':
     print("hello")
-    #unittest.main()
     launch_unittest = unittest.main()
     print("voici les résultats des tests unitaires : ", launch_unittest)
     app.run(debug=False)

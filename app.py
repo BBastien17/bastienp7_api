@@ -1,6 +1,7 @@
 # Librairies pour faire les tests avec unittest
 import unittest
 from unittest.mock import Mock
+from pathlib import Path
 import xgboost.sklearn
 from xgboost import sklearn
 from xgboost import XGBClassifier
@@ -109,7 +110,13 @@ def calc_score_predictproba (ref_client, data_work_complet):
     score = model.predict_proba(data_work_list_result_transf)
     print("affichage du score : ", score)
     return score
-    
+
+def is_sourcefile(path):
+    """Retourne True si le fichier est un fichier source Python"""
+    if not path.is_file():
+        raise Exception("Fichier indisponible")
+    return path.suffix == ".py"
+
 class UneClasseDeTest(unittest.TestCase):
     def test_is_sourcefile_when_sourcefile(self):
         path = Mock()

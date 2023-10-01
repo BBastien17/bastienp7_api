@@ -16,3 +16,4 @@ jobs:
           heroku_api_key: ${{74c1112c-d16f-446c-9b6f-ee3315b7ec8b}}
           heroku_app_name: "bastienp7-api"
           heroku_email: "boyer_bastien@msn.com"
+          usedocker: true

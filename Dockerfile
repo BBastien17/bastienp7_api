@@ -4,5 +4,5 @@ FROM continuumio/anaconda3:2020.11
 ADD . /code
 WORKDIR /code
 
-ENTRYPOINT ["gunicorn", "app.py"]
+ENTRYPOINT ["python", "app.py"]
 

@@ -15,5 +15,3 @@ jobs:
           heroku_app_name: "bastienp7-api"
           heroku_email: "boyer_bastien@msn.com"
           usedocker: true
-          
-          

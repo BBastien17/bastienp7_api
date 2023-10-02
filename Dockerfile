@@ -6,11 +6,16 @@
 
 #ENTRYPOINT ["python", "app.py"]
 
-
-
-FROM python
+FROM python:3.10
 WORKDIR /app
-COPY requirements.txt ./
+COPY ./requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+COPY . .
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app()"]
 
-RUN pip install --no-cache-dir -r requirements.txt
-CMD	[“gunicorn”,”-w” “4”,”app:app”,”--bind” “0.0.0.0:8000”]
+#FROM python
+#WORKDIR /app
+#COPY requirements.txt ./
+
+#RUN pip install --no-cache-dir -r requirements.txt
+#CMD	[“gunicorn”,”-w” “4”,”app:app”,”--bind” “0.0.0.0:8000”]

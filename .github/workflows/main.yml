@@ -2,7 +2,8 @@ name: Push Container to Heroku
 
 on:
   push:
-    branches: [ main/master ]
+    branches:
+      - master
 
 jobs:
   build:

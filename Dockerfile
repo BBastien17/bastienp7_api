@@ -1,5 +1,5 @@
 #Dockerfile explique comment construire un Docker Image
-FROM continuumio/anaconda3:2020.11
+#FROM continuumio/anaconda3:2020.11
 
 #ADD . /code
 #WORKDIR /code
@@ -8,11 +8,9 @@ FROM continuumio/anaconda3:2020.11
 
 
 
+FROM     python
 WORKDIR  /app
-COPY     ./app.py 	./
-COPY requirements.txt ./
-#COPY	./requirements.txt		./
-RUN pip install --no-cache-dir -r requirements.txt
-#RUN		pip install –r /requirements.txt --no-cache-dir
+COPY  app.py./
+COPY	requirements.txt./
+RUN		pip install –r requirements.txt --no-cache-dir
 CMD		[“gunicorn”,”-w” “4”,”app:app”,”--bind” “0.0.0.0:8000”]
-

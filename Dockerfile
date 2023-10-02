@@ -7,16 +7,11 @@ FROM continuumio/anaconda3:2020.11
 #ENTRYPOINT ["python", "app.py"]
 
 
-WORKDIR /app
 
-COPY requirements.txt ./
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-#ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0 --chdir=./src/"
-#COPY . .
-
-#EXPOSE 8000
-
-CMD [ "gunicorn", "app:app" ]
+WORKDIR  /app
+COPY     ./app.py 	./
+COPY	./requirements.txt		./
+RUN     pip install --upgrade pip --no-cache-dir
+RUN		pip install –r /requirements.txt --no-cache-dir
+CMD		[“gunicorn”,”-w” “4”,”app:app”,”--bind” “0.0.0.0:8000”]
 

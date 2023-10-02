@@ -15,10 +15,7 @@ jobs:
           heroku_app_name: "bastienp7-api"
           heroku_email: "boyer_bastien@msn.com"
           usedocker: true
-    - name: Release
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a ${{ secrets.bastienp7-api }} web 
+
 
 
 

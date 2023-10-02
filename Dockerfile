@@ -13,10 +13,10 @@ COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0 --chdir=./src/"
-COPY . .
+#ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0 --chdir=./src/"
+#COPY . .
 
-EXPOSE 8000
+#EXPOSE 8000
 
 CMD [ "gunicorn", "app:app" ]
 

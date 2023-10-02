@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('https://github.com/BBastien17/bastienp7_api/blob/c2d8482f7150d13d2072425868889d87820cd247/Pipfile.lock') }}
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/bastienp7_api/Pipfile.lock') }}
 
       - name: Install dependencies
         if: steps.cache-pipenv.outputs.cache-hit != 'true'

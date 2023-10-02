@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+seaborn = "*"
+numpy = "*"
 
 [dev-packages]
 pytest = "*"

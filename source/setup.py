@@ -35,6 +35,6 @@ setup(
     python_requires=__python_supported_version__,
     entry_points='''
         [console_scripts]
-        bastienp7_api=client.client_script:start_point
+        bastienp7_api=app.py:unittest.main()
     ''',
 )

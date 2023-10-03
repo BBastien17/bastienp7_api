@@ -1,6 +1,10 @@
 # .github/workflows/app.yaml
 name: Deploy PyTest
-on: push
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main, development]
 
 jobs:
   test:
@@ -23,7 +27,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install
           pip install -r requirements.txt
           pip install -e .
 

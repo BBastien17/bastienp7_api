@@ -1,3 +1,8 @@
+
+
+
+FROM python:3.10
+
 #Dockerfile explique comment construire un Docker Image
 
 # Tells pipenv to create virtualenvs in /root rather than $HOME/.local/share.
@@ -11,7 +16,6 @@ ENV WORKON_HOME /root
 ENV PIPENV_PIPFILE /Pipfile
 
 
-FROM python:3.10
 WORKDIR /app
 COPY ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt

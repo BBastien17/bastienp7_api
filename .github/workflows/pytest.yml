@@ -32,7 +32,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          python –m unittest app.py
+          python –m unittest /app.py
           cd scripts
           chmod +x run_tests.sh
           ./run_tests.sh

@@ -25,5 +25,6 @@ PARENT_DIRECTORY="${DIR%/*}"
 cd ${PARENT_DIRECTORY}
 
 # run all unit tests
-python -m pytest --import-mode=append tests/
+#python -m pytest --import-mode=append tests/
+python -m unittest --import-mode=append tests/
 # python -m unittest discover

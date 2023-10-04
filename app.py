@@ -17,6 +17,7 @@ from streamlit import runtime
 #Librairies pour MLFLOW Tracking
 import os
 import mlflow
+from fastapi import FastAPI
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
@@ -85,6 +86,8 @@ def calc_score_predictproba (ref_client, data_work_complet):
     score = model.predict_proba(data_work_list_result_transf)
     print("affichage du score : ", score)
     return score
+
+app = FastAPI()
 
 @app.post("/streamlit_prediction")
 def streamlit_prediction():

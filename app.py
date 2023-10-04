@@ -138,9 +138,9 @@ app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 todos = {}
 
 @app.get("/")
-def dashboard():
-    print("Lancement du Dashboard de simulation")
-    subprocess.run(["python", "./dashboard.py"])
+#def dashboard():
+#    print("Lancement du Dashboard de simulation")
+#    subprocess.run(["python", "./dashboard.py"])
 
 #def index():     
 #    return render_template('dashboard.html', todos=todos)

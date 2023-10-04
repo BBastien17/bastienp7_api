@@ -86,6 +86,7 @@ def calc_score_predictproba (ref_client, data_work_complet):
     print("affichage du score : ", score)
     return score
 
+@app.post("/streamlit_prediction")
 def streamlit_prediction():
 #On transforme les variables catégorielles en variables numériques
     data_list_result_transf = data_list_result.replace(transf_data_categ)

@@ -1,2 +1,2 @@
-python api.py
+python app.py
 streamlit run dashboard.py

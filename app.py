@@ -190,7 +190,7 @@ def client_description():
 @app.route('/dashboard', methods = ['GET', 'POST'])
 def dashboard():
     print("Lancement du Dashboard de simulation")
-    subprocess.run(["python", "./dashboard.py"])
+    return (subprocess.run(["python", "./dashboard.py"]))
 
 @app.route("/streamlit_prediction")
 def streamlit_prediction():

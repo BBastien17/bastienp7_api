@@ -17,7 +17,7 @@ from streamlit import runtime
 #Librairies pour MLFLOW Tracking
 import os
 import mlflow
-from fastapi import FastAPI
+#from fastapi import FastAPI
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
@@ -87,9 +87,9 @@ def calc_score_predictproba (ref_client, data_work_complet):
     print("affichage du score : ", score)
     return score
 
-app = FastAPI()
+#app = FastAPI()
 
-@app.post("/streamlit_prediction")
+@app.route("/streamlit_prediction")
 def streamlit_prediction():
 #On transforme les variables catégorielles en variables numériques
     data_list_result_transf = data_list_result.replace(transf_data_categ)

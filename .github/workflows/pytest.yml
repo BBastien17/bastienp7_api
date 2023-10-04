@@ -1,5 +1,5 @@
 # .github/workflows/app.yaml
-name: Deploy PyTest
+name: Deploy Unittest
 on:
   push:
     branches: [main, development]
@@ -32,9 +32,6 @@ jobs:
 
       - name: Run unit tests
         run: |
-          cd tests
-          python –m unittest test_api.py 
-          unittest test_api.py
           cd scripts
           chmod +x run_tests.sh
           ./run_tests.sh

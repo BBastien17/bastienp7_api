@@ -6,4 +6,4 @@ COPY . .
 EXPOSE 8501
 ENTRYPOINT ["streamlit", "run"]
 CMD ["dashboard.py"]
-
+CMD ["setup.sh"]

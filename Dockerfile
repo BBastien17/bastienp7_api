@@ -4,4 +4,4 @@ COPY ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY . .
 EXPOSE 8501
-CMD python api.py && streamlit run dashboard.py
+CMD python app.py && streamlit run dashboard.py

@@ -16,6 +16,7 @@ from xgboost import XGBClassifier
 import shap
 from sklearn.model_selection import train_test_split
 import pickle
+import json
 
 
 #Importation du modèle mlflow

@@ -7,3 +7,4 @@ COPY . .
 EXPOSE 8501
 ## Exécuter app.py lorsque le conteneur est lancé
 CMD streamlit run dashboard.py --server.port $PORT
+CMD ["gunicorn", "app:app"]

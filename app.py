@@ -17,7 +17,9 @@ from streamlit import runtime
 #Librairies pour MLFLOW Tracking
 import os
 import mlflow
-#from fastapi import FastAPI
+from fastapi import FastAPI
+
+app = FastAPI()
 
 #Importation du modèle mlflow
 path = 'Projet_7/'

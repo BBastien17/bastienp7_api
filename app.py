@@ -54,7 +54,7 @@ def calc_score_predictproba (ref_client, data_work_complet):
                         'Delai_anticipation_pret':data_work_client['Delai_anticipation_pret']}
 
 #Fonction pour calculer le score prédictproba du client
-@app.route("/calc_score_predictproba_streamlit")
+@app.post("/calc_score_predictproba_streamlit")
 def calc_score_predictproba_streamlit (ref_client, data_work_complet):
     print("Lancement de la fonction calc_score_predictproba")
     #Création d'un dataframe avec les information du client sélectionné :
@@ -216,7 +216,7 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-@app.route("/streamlit_prediction")
+@app.post("/streamlit_prediction")
 def streamlit_prediction():
     #Prédiction du résultat
     pred = model.predict(data_list_result_transf)

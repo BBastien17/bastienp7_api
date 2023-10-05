@@ -55,7 +55,7 @@ def compare_client(data_work, data_list_result):
 #Création d'un formulaire à compléter
 def page_p (data_work, data_target, data_complete) :
 
-    st.title("Demande d'étude de financement")
+    st.title("Demande d'étude de financement :")
 
     type_pret_client = st.radio("Type de prêt :",
                                 key="Type_de_pret",

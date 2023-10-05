@@ -134,7 +134,7 @@ def page_p (data_work, data_target, data_complete) :
 
     #Préparation du dataframe pour le transformer en json
     data_list_result_transf = data_list_result.replace(transf_data_categ)
-    data_list_json = data_list_result_transfdf.to_json()
+    data_list_json = data_list_result_transf.to_json()
 
     
     
@@ -146,6 +146,27 @@ def page_p (data_work, data_target, data_complete) :
         res = requests.post(url = "http://https://bastienp7-api-64085d97a29c.herokuapp.com/streamlit_prediction",
                             data = data_list_json)
         st.subheader(f"Le résultat de la prédiction est : {res.text}")
-        
+        result_predict = res.text
+
+        if result_predict == 0 :
+            st.text("Les données fournies permettent d'émettre un avis favorable à la demande de prêt.")
+            st.text("Positionnement des caractéristiques du prospect vis à vis du reste de la clientèle :")
+            compare_client(data_work, data_list_result)
+
+        elif result_predict == 1 :
+            st.text("Les données fournies ne permettent pas d'émettre un avis favorable à la demande de prêt.")
+            #Création d'un dataframe avec les valeurs du prospect
+            data_line_pred = pd.DataFrame(data_list_result_transf, columns=data_work.columns)
+            #Utile pour les tests afin d'afficher les valeurs du client sélectionné
+            st.write(data_line_pred)
+            #Utilisation de la méthode shap via le pickle
+            #shap_values = explainer(data_line_pred)
+    
+            #Utilisation de  et affichage de l'interprétabilité locale
+            fig = shap.plots.bar(shap_values[0])  
+            plt.savefig('shap_report_P7.png', bbox_inches='tight')      
+            st.image('shap_report_P7.png')
+            st.text("Positionnement des caractéristiques du prospect vis à vis du reste de la clientèle :")
+            compare_client(data_work, data_list_result)
 
         

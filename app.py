@@ -143,8 +143,8 @@ todos = {}
 #    print("Lancement du Dashboard de simulation")
 #    subprocess.run(["python", "./dashboard.py"])
 
-#def index():     
-#    return render_template('dashboard.html', todos=todos)
+def index():     
+    return render_template('dashboard.html', todos=todos)
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():

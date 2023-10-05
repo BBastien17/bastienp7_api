@@ -134,7 +134,7 @@ def page_p (data_work, data_target, data_complete) :
     predict_btn = st.button('Résultat de la demande de financement', key = "prospects_button")
     if predict_btn:
         st.write("predict button was pressed")
-        #res = requests.post(url = "http://127.0.0.1:8000/streamlit_prediction")
+        res = requests.post(url = "http://127.0.0.1:8000/streamlit_prediction")
         
 
         

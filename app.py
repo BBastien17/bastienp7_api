@@ -195,14 +195,16 @@ def dashboard():
 @app.route("/streamlit_prediction")
 def streamlit_prediction():
 #On transforme les variables catégorielles en variables numériques
-    data_list_result_transf = data_list_result.replace(transf_data_categ)
+    #data_list_result_transf = data_list_result.replace(transf_data_categ)
 
     #Prédiction du résultat
     pred = model.predict(data_list_result_transf)
     #Utile pour les tests
     #st.text(pred)
+    return pred
 
-    
+@app.route("/streamlit_prediction_suite")
+def streamlit_prediction_suite():   
     if pred == 0 :
         st.text("Les données fournies permettent d'émettre un avis favorable à la demande de prêt.")
         st.text("Positionnement des caractéristiques du prospect vis à vis du reste de la clientèle :")

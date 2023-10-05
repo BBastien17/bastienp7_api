@@ -132,7 +132,7 @@ def page_p (data_work, data_target, data_complete) :
     #st.text(data_pred.info(verbose=True))
 
 
-    #Préparation du dataframe pour le transformer en json
+    #Préparation du dataframe pour le transformer en json et les variables catégorielles en variables numériques
     data_list_result_transf = data_list_result.replace(transf_data_categ)
     data_list_json = data_list_result_transf.to_json()
 

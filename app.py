@@ -217,7 +217,11 @@ def dashboard():
     return (subprocess.run(["python", "./dashboard.py"]))
 
 @app.post("/streamlit_prediction")
-def streamlit_prediction():
+def streamlit_prediction(data_list_json):
+    dict= json.loads(data_list_json)
+    print("variable dict : ", dict)
+    data_list_result_transf = pd.DataFrame.from_dict(dict)
+    print("variable data_list_result_transf : ", data_list_result_transf)
     #Prédiction du résultat
     pred = model.predict(data_list_result_transf)
     #Utile pour les tests

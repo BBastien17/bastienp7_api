@@ -134,7 +134,7 @@ def page_p (data_work, data_target, data_complete) :
 
     #Préparation du dataframe pour le transformer en json
     data_list_result_transf = data_list_result.replace(transf_data_categ)
-    
+    data_list_json = data_list_result_transfdf.to_json()
 
     
     
@@ -142,8 +142,9 @@ def page_p (data_work, data_target, data_complete) :
     predict_btn = st.button('Résultat de la demande de financement', key = "prospects_button")
     if predict_btn:
         st.write("predict button was pressed")
+        
         res = requests.post(url = "http://https://bastienp7-api-64085d97a29c.herokuapp.com/streamlit_prediction",
-                            data = json.dumps(data_list_result_transf))
+                            data = data_list_json)
         st.subheader(f"Le résultat de la prédiction est : {res.text}")
         
 

@@ -31,6 +31,7 @@ data_target_complet = pd.read_csv("./data_target.csv")
 print(data_target_complet.head())
 
 #Fonction pour calculer le score prédictproba du client
+@app.route("/calc_score_predictproba")
 def calc_score_predictproba (ref_client, data_work_complet):
     print("Lancement de la fonction calc_score_predictproba")
     #Création d'un dataframe avec les information du client sélectionné :
@@ -194,40 +195,12 @@ def dashboard():
 
 @app.route("/streamlit_prediction")
 def streamlit_prediction():
-#On transforme les variables catégorielles en variables numériques
-    #data_list_result_transf = data_list_result.replace(transf_data_categ)
-
     #Prédiction du résultat
     pred = model.predict(data_list_result_transf)
     #Utile pour les tests
     #st.text(pred)
     return pred
 
-@app.route("/streamlit_prediction_suite")
-def streamlit_prediction_suite():   
-    if pred == 0 :
-        st.text("Les données fournies permettent d'émettre un avis favorable à la demande de prêt.")
-        st.text("Positionnement des caractéristiques du prospect vis à vis du reste de la clientèle :")
-        compare_client(data_work, data_list_result)
-
-    elif pred == 1 :
-        st.text("Les données fournies ne permettent pas d'émettre un avis favorable à la demande de prêt.")
-        #Création d'un dataframe avec les valeurs du prospect
-        data_line_pred = pd.DataFrame(data_list_result_transf, columns=data_work.columns)
-        #Utile pour les tests afin d'afficher les valeurs du client sélectionné
-        st.write(data_line_pred)
-        #Utilisation de la méthode shap via le pickle
-        #shap_values = explainer(data_line_pred)
-
-        #Utilisation de  et affichage de l'interprétabilité locale
-        fig = shap.plots.bar(shap_values[0])  
-        plt.savefig('shap_report_P7.png', bbox_inches='tight')      
-        st.image('shap_report_P7.png')
-        st.text("Positionnement des caractéristiques du prospect vis à vis du reste de la clientèle :")
-        compare_client(data_work, data_list_result)
-
-    else :
-        st.text("Error")
 
 if __name__ == '__main__':
     print("hello")

@@ -241,14 +241,16 @@ def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
                          Nb_demande_client, Montants_du_pret,
                          Montant_des_annuites, Nb_jours_credits,
                          Montant_anticipation_pret, Delai_anticipation_pret) :
-    dict = {data_list_json.Type_de_pret, data_list_json.Genre,
-            data_list_json.Age, data_list_json.Niveau_d_etudes,
-            data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
-            data_list_json.Nb_membre_famille, data_list_json.Montant_des_revenus,
-            data_list_json.Note_region_client, data_list_json.Nb_demande_client,
-            data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
-            data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
-            data_list_json.Delai_anticipation_pret}
+    #dict = {data_list_json.Type_de_pret, data_list_json.Genre,
+    #        data_list_json.Age, data_list_json.Niveau_d_etudes,
+    #        data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
+    #        data_list_json.Nb_membre_famille, data_list_json.Montant_des_revenus,
+    #        data_list_json.Note_region_client, data_list_json.Nb_demande_client,
+    #        data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
+    #        data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
+    #        data_list_json.Delai_anticipation_pret}
+    Nb_enfants = Nb_enfants                       
+    dict = {"Nb_enfants":Nb_enfants}
     print("dict dans la fonction prediction_streamlit : ", dict)
     return dict
 

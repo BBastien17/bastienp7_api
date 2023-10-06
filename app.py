@@ -259,13 +259,14 @@ def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
 @app.route("/streamlit_prediction")
 def streamlit_prediction():#input:User_input):
     print("Coucou")
-    list_var = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimonial",
-                "Nb_enfants", "Nb_membre_famille", "Montant_des_revenus", "Note_region_client",
-                "Nb_demande_client", "Montants_du_pret", "Montant_des_annuites",
-                "Nb_jours_credits", "Montant_anticipation_pret", "Delai_anticipation_pret"]
-    selector = request.args.get("data_list")
+    #list_var = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimonial",
+    #            "Nb_enfants", "Nb_membre_famille", "Montant_des_revenus", "Note_region_client",
+    #            "Nb_demande_client", "Montants_du_pret", "Montant_des_annuites",
+    #            "Nb_jours_credits", "Montant_anticipation_pret", "Delai_anticipation_pret"]
+    selector = request.get(data)
     print("variable selector : ", selector)
-    transform_text = selector.text
+    transform_text = pd.DataFrame(selector)
+    #transform_text = selector.text
     print("selector text : ", transform_text)
     
   

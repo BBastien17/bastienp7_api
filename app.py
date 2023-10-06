@@ -255,7 +255,7 @@ def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
     return dict
 
 
-@app.post("/streamlit_prediction")
+@app.route("/streamlit_prediction")
 def streamlit_prediction():#input:User_input):
     selector = request.args.get("data_list_json")
     print("variable selector : ", selector)

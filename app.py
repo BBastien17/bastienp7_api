@@ -256,7 +256,7 @@ def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
     return dict
 
 
-@app.route("/streamlit_prediction")
+@app.post("/streamlit_prediction")
 def streamlit_prediction():#input:User_input):
     print("Coucou")
     #list_var = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimonial",

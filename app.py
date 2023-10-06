@@ -235,9 +235,12 @@ class User_input(BaseModel):
     Montant_anticipation_pret : int
     Delai_anticipation_pret : int
 
-
-@app.post("/streamlit_prediction")
-def streamlit_prediction(data_list_json:User_input):
+def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
+                         Regime_matrimonial, Nb_enfants, Nb_membre_famille,
+                         Montant_des_revenus, Note_region_client,
+                         Nb_demande_client, Montants_du_pret,
+                         Montant_des_annuites, Nb_jours_credits,
+                         Montant_anticipation_pret, Delai_anticipation_pret) :
     dict = {data_list_json.Type_de_pret, data_list_json.Genre,
             data_list_json.Age, data_list_json.Niveau_d_etudes,
             data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
@@ -245,18 +248,32 @@ def streamlit_prediction(data_list_json:User_input):
             data_list_json.Note_region_client, data_list_json.Nb_demande_client,
             data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
             data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
-            data_list_json.Delai_anticipation_pret, }
-    print("variable data_list_json : ", dict)
+            data_list_json.Delai_anticipation_pret}
+    print("dict dans la fonction prediction_streamlit : ", dict)
+    return dict
+
+
+@app.post("/prediction_streamlit")
+def streamlit_prediction(data_list_json:User_input):
+    result_dict = prediction_streamlit(data_list_json.Type_de_pret, data_list_json.Genre,
+                                       data_list_json.Age, data_list_json.Niveau_d_etudes,
+                                       data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
+                                       data_list_json.Nb_membre_famille, data_list_json.Montant_des_revenus,
+                                       data_list_json.Note_region_client, data_list_json.Nb_demande_client,
+                                       data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
+                                       data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
+                                       data_list_json.Delai_anticipation_pret)
+    print("variable result_dict : ", result_dict)
     #dict= json.loads(data_list_json)
     #print("variable dict : ", dict)
-    data_list_result_transf = pd.DataFrame.from_dict(dict)
+    #data_list_result_transf = pd.DataFrame.from_dict(dict)
     #data_list_result_transf = data_list_json
-    print("variable data_list_result_transf : ", data_list_result_transf)
+    #print("variable data_list_result_transf : ", data_list_result_transf)
     #Prédiction du résultat
-    pred = model.predict(data_list_result_transf)
+    #pred = model.predict(data_list_result_transf)
     #Utile pour les tests
     #st.text(pred)
-    return pred
+    #return pred
 
 
 if __name__ == '__main__':

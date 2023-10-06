@@ -264,7 +264,8 @@ def streamlit_prediction():#input:User_input):
                 Nb_jours_credits, Montant_anticipation_pret, Delai_anticipation_pret]
     selector = request.args.post(list_var)
     print("variable selector : ", selector)
-    
+    transform_text = selector.text
+    print("selector text : ", transform_text)
     
   
     data_stream = pd.DataFrame(data=selector)

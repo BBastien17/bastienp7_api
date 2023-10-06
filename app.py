@@ -259,6 +259,8 @@ def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
 def streamlit_prediction():#input:User_input):
     selector = request.args.post("data_list")
     print("variable selector : ", selector)
+    data_stream = pd.DataFrame(data=selector)
+    print("variable data_stream : ", data_stream)
     #result_dict = prediction_streamlit(input.Type_de_pret, input.Genre,
     #                                   input.Age, input.Niveau_d_etudes,
     #                                   input.Regime_matrimonial, input.Nb_enfants,

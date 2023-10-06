@@ -217,7 +217,7 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-Création d'une classe pour les valeurs du client
+#Création d'une classe pour les valeurs du client
 class User_input(BaseModel):
     Type_de_pret : int
     Genre : int

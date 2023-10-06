@@ -18,6 +18,7 @@ from streamlit import runtime
 import os
 import mlflow
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -216,13 +217,40 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
+Création d'une classe pour les valeurs du client
+class User_input(BaseModel):
+    Type_de_pret : int
+    Genre : int
+    Age : int
+    Niveau_d_etudes : int
+    Regime_matrimonial : int
+    Nb_enfants : int
+    Nb_membre_famille : int
+    Montant_des_revenus : int
+    Note_region_client : int
+    Nb_demande_client : int
+    Montants_du_pret : int
+    Montant_des_annuites : int
+    Nb_jours_credits : int
+    Montant_anticipation_pret : int
+    Delai_anticipation_pret : int
+
+
 @app.post("/streamlit_prediction")
-def streamlit_prediction(data_list_json):
-    print("variable data_list_json : ", data_list_json)
+def streamlit_prediction(data_list_json:User_input):
+    dict = {data_list_json.Type_de_pret, data_list_json.Genre,
+            data_list_json.Age, data_list_json.Niveau_d_etudes,
+            data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
+            data_list_json.Nb_membre_famille, data_list_json.Montant_des_revenus,
+            data_list_json.Note_region_client, data_list_json.Nb_demande_client,
+            data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
+            data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
+            data_list_json.Delai_anticipation_pret, }
+    print("variable data_list_json : ", dict)
     #dict= json.loads(data_list_json)
     #print("variable dict : ", dict)
-    #data_list_result_transf = pd.DataFrame.from_dict(dict)
-    data_list_result_transf = data_list_json
+    data_list_result_transf = pd.DataFrame.from_dict(dict)
+    #data_list_result_transf = data_list_json
     print("variable data_list_result_transf : ", data_list_result_transf)
     #Prédiction du résultat
     pred = model.predict(data_list_result_transf)

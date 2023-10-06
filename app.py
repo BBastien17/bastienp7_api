@@ -262,7 +262,7 @@ def streamlit_prediction():#input:User_input):
                 Nb_enfants, Nb_membre_famille, Montant_des_revenus, Note_region_client,
                 Nb_demande_client, Montants_du_pret, Montant_des_annuites,
                 Nb_jours_credits, Montant_anticipation_pret, Delai_anticipation_pret]
-    selector = request.args.post(list_var)
+    selector = request.args.get(list_var)
     print("variable selector : ", selector)
     transform_text = selector.text
     print("selector text : ", transform_text)

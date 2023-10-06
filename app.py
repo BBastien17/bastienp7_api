@@ -254,15 +254,15 @@ def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
 
 
 @app.post("/prediction_streamlit")
-def streamlit_prediction(data_list_json:User_input):
-    result_dict = prediction_streamlit(data_list_json.Type_de_pret, data_list_json.Genre,
-                                       data_list_json.Age, data_list_json.Niveau_d_etudes,
-                                       data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
-                                       data_list_json.Nb_membre_famille, data_list_json.Montant_des_revenus,
-                                       data_list_json.Note_region_client, data_list_json.Nb_demande_client,
-                                       data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
-                                       data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
-                                       data_list_json.Delai_anticipation_pret)
+def streamlit_prediction(input:User_input):
+    result_dict = prediction_streamlit(input.Type_de_pret, input.Genre,
+                                       input.Age, input.Niveau_d_etudes,
+                                       input.Regime_matrimonial, input.Nb_enfants,
+                                       input.Nb_membre_famille, input.Montant_des_revenus,
+                                       input.Note_region_client, input.Nb_demande_client,
+                                       input.Montants_du_pret, input.Montant_des_annuites,
+                                       input.Nb_jours_credits, input.Delai_anticipation_pret,
+                                       input.Delai_anticipation_pret)
     print("variable result_dict : ", result_dict)
     #dict= json.loads(data_list_json)
     #print("variable dict : ", dict)

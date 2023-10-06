@@ -264,11 +264,12 @@ def streamlit_prediction():#input:User_input):
                 Nb_jours_credits, Montant_anticipation_pret, Delai_anticipation_pret]
     selector = request.args.post(list_var)
     print("variable selector : ", selector)
-
+    
     
   
     data_stream = pd.DataFrame(data=selector)
     print("variable data_stream : ", data_stream)
+    pred = data_stream.copy()
     #result_dict = prediction_streamlit(input.Type_de_pret, input.Genre,
     #                                   input.Age, input.Niveau_d_etudes,
     #                                   input.Regime_matrimonial, input.Nb_enfants,
@@ -287,7 +288,7 @@ def streamlit_prediction():#input:User_input):
     #pred = model.predict(data_list_result_transf)
     #Utile pour les tests
     #st.text(pred)
-    #return pred
+    return pred
 
 
 if __name__ == '__main__':

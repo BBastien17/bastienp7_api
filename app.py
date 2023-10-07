@@ -155,7 +155,7 @@ def dashboard():
     return (subprocess.run(["python", "./dashboard.py"]))
 
 
-@app.route('/streamlit_to_api')
+@app.post('/streamlit_to_api')
 def streamlit_to_api(data):
     print("coucou test")
     test = {23}

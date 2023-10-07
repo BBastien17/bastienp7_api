@@ -7,7 +7,7 @@ from xgboost import sklearn
 from xgboost import XGBClassifier
 import mlflow.sklearn
 import pandas as pd
-from flask import Flask, render_template, redirect, request, url_for, send_file
+from flask import Flask, render_template, redirect, request, url_for, send_file, jsonify
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import pickle
@@ -156,10 +156,10 @@ def dashboard():
 
 
 @app.route('/streamlit_to_api')
-def streamlit_to_api():
+def streamlit_to_api(data):
     print("coucou test")
-    test = 1
-    return test
+    test = {23}
+    return jsonify(test)
 
 if __name__ == '__main__':
     print("hello")

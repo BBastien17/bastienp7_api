@@ -312,9 +312,10 @@ class Item(BaseModel):
 
 
 @app.route('/api/streamlit_to_api')
-def add_new_pivots(item: List[Item]):
+def add_new_pivots():
     print("coucou test")
-    return item
+    test = 1
+    return test
 
 if __name__ == '__main__':
     print("hello")

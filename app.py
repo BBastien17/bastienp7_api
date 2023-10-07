@@ -21,8 +21,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from pandas import json_normalize
 
-app = FastAPI()
-
 #Importation du modèle mlflow
 path = 'Projet_7/'
 with open(f'xgb_model_final/model.pkl', 'rb') as f:
@@ -113,9 +111,6 @@ def calc_score_predictproba_streamlit (ref_client, data_work_complet):
     print("affichage du score : ", score)
     return score
 
-#app = FastAPI()
-
-
 
 def is_sourcefile(path):
     """Retourne True si le fichier est un fichier source Python"""
@@ -158,16 +153,13 @@ class UneClasseDeTest(unittest.TestCase):
         resultat = is_sourcefile(path)
         self.assertFalse(resultat)
         path.is_file.assert_called()
+      
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config["SECRET_KEY"] = "74c1112c-d16f-446c-9b6f-ee3315b7ec8b"
 todos = {}
 
 @app.get("/")
-#def dashboard():
-#    print("Lancement du Dashboard de simulation")
-#    subprocess.run(["python", "./dashboard.py"])
-
 def index():     
     return render_template('dashboard.html', todos=todos)
 
@@ -217,98 +209,6 @@ def client_description():
 def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
-
-#Création d'une classe pour les valeurs du client
-class User_input(BaseModel):
-    Type_de_pret : int
-    Genre : int
-    Age : int
-    Niveau_d_etudes : int
-    Regime_matrimonial : int
-    Nb_enfants : int
-    Nb_membre_famille : int
-    Montant_des_revenus : int
-    Note_region_client : int
-    Nb_demande_client : int
-    Montants_du_pret : int
-    Montant_des_annuites : int
-    Nb_jours_credits : int
-    Montant_anticipation_pret : int
-    Delai_anticipation_pret : int
-
-def prediction_streamlit(Type_de_pret, Genre, Age, Niveau_d_etudes,
-                         Regime_matrimonial, Nb_enfants, Nb_membre_famille,
-                         Montant_des_revenus, Note_region_client,
-                         Nb_demande_client, Montants_du_pret,
-                         Montant_des_annuites, Nb_jours_credits,
-                         Montant_anticipation_pret, Delai_anticipation_pret) :
-    #dict = {data_list_json.Type_de_pret, data_list_json.Genre,
-    #        data_list_json.Age, data_list_json.Niveau_d_etudes,
-    #        data_list_json.Regime_matrimonial, data_list_json.Nb_enfants,
-    #        data_list_json.Nb_membre_famille, data_list_json.Montant_des_revenus,
-    #        data_list_json.Note_region_client, data_list_json.Nb_demande_client,
-    #        data_list_json.Montants_du_pret, data_list_json.Montant_des_annuites,
-    #        data_list_json.Nb_jours_credits, data_list_json.Delai_anticipation_pret,
-    #        data_list_json.Delai_anticipation_pret}
-    Nb_enfants = Nb_enfants                       
-    dict = {"Nb_enfants":Nb_enfants}
-    print("dict dans la fonction prediction_streamlit : ", dict)
-    return dict
-
-
-@app.post("/streamlit_prediction")
-def streamlit_prediction():#input:User_input):
-    print("Coucou")
-    #list_var = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimonial",
-    #            "Nb_enfants", "Nb_membre_famille", "Montant_des_revenus", "Note_region_client",
-    #            "Nb_demande_client", "Montants_du_pret", "Montant_des_annuites",
-    #            "Nb_jours_credits", "Montant_anticipation_pret", "Delai_anticipation_pret"]
-    selector = request.post(data)
-    print("variable selector : ", selector)
-    transform_text = pd.DataFrame(selector)
-    #transform_text = selector.text
-    print("selector text : ", transform_text)
-    
-  
-    data_stream = pd.DataFrame(data=selector)
-    print("variable data_stream : ", data_stream)
-    pred = data_stream.copy()
-    #result_dict = prediction_streamlit(input.Type_de_pret, input.Genre,
-    #                                   input.Age, input.Niveau_d_etudes,
-    #                                   input.Regime_matrimonial, input.Nb_enfants,
-    #                                   input.Nb_membre_famille, input.Montant_des_revenus,
-    #                                   input.Note_region_client, input.Nb_demande_client,
-    #                                   input.Montants_du_pret, input.Montant_des_annuites,
-    #                                   input.Nb_jours_credits, input.Delai_anticipation_pret,
-    #                                   input.Delai_anticipation_pret)
-    #print("variable result_dict : ", result_dict)
-    #dict= json.loads(data_list_json)
-    #print("variable dict : ", dict)
-    #data_list_result_transf = pd.DataFrame.from_dict(dict)
-    #data_list_result_transf = data_list_json
-    #print("variable data_list_result_transf : ", data_list_result_transf)
-    #Prédiction du résultat
-    #pred = model.predict(data_list_result_transf)
-    #Utile pour les tests
-    #st.text(pred)
-    return pred
-
-class Item(BaseModel):
-    Type_de_pret : List[str]
-    Genre : List[str]
-    Age : List[str]
-    Niveau_d_etudes : List[str]
-    Regime_matrimonial : List[str]
-    Nb_enfants : List[str]
-    Nb_membre_famille : List[str]
-    Montant_des_revenus : List[str]
-    Note_region_client : List[str]
-    Nb_demande_client : List[str]
-    Montants_du_pret : List[str]
-    Montant_des_annuites : List[str]
-    Nb_jours_credits : List[str]
-    Montant_anticipation_pret : List[str]
-    Delai_anticipation_pret : List[str]
 
 
 @app.route('/streamlit_to_api')

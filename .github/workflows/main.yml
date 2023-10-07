@@ -31,6 +31,7 @@ jobs:
           pip install pipenv
           pipenv run pytest
           pipenv run test -v
+          provenance: false
           
       - name: Test with pytest
         run: |

@@ -311,7 +311,7 @@ class Item(BaseModel):
     Delai_anticipation_pret : List[str]
 
 
-@app.post('/streamlit_to_api')
+@app.route('/api/streamlit_to_api')
 def add_new_pivots(item: List[Item]):
     return item
 

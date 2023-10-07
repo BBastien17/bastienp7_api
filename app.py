@@ -311,8 +311,8 @@ class Item(BaseModel):
     Delai_anticipation_pret : List[str]
 
 
-@app.route('/api/streamlit_to_api')
-def add_new_pivots():
+@app.route('/streamlit_to_api')
+def streamlit_to_api():
     print("coucou test")
     test = 1
     return test

@@ -294,21 +294,21 @@ def streamlit_prediction():#input:User_input):
     return pred
 
 class Item(BaseModel):
-    Type_de_pret : str
-    Genre : str
-    Age : str
-    Niveau_d_etudes : str
-    Regime_matrimonial : str
-    Nb_enfants : str
-    Nb_membre_famille : str
-    Montant_des_revenus : str
-    Note_region_client : str
-    Nb_demande_client : str
-    Montants_du_pret : str
-    Montant_des_annuites : str
-    Nb_jours_credits : str
-    Montant_anticipation_pret : str
-    Delai_anticipation_pret : str
+    Type_de_pret : List[str]
+    Genre : List[str]
+    Age : List[str]
+    Niveau_d_etudes : List[str]
+    Regime_matrimonial : List[str]
+    Nb_enfants : List[str]
+    Nb_membre_famille : List[str]
+    Montant_des_revenus : List[str]
+    Note_region_client : List[str]
+    Nb_demande_client : List[str]
+    Montants_du_pret : List[str]
+    Montant_des_annuites : List[str]
+    Nb_jours_credits : List[str]
+    Montant_anticipation_pret : List[str]
+    Delai_anticipation_pret : List[str]
 
 
 @app.post('/streamlit_to_api')

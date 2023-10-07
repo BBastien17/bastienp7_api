@@ -155,11 +155,11 @@ def dashboard():
     return (subprocess.run(["python", "./dashboard.py"]))
 
 
-#@app.route('/streamlit_to_api')
-#def streamlit_to_api():
-#    print("coucou test")
-#    test = 1
-#    return test
+@app.route('/streamlit_to_api')
+def streamlit_to_api():
+    print("coucou test")
+    test = 1
+    return test
 
 if __name__ == '__main__':
     print("hello")

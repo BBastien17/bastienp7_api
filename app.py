@@ -28,7 +28,7 @@ import requests
 #Importation du modèle mlflow
 path = 'Projet_7/'
 with open(f'xgb_model_final/model.pkl', 'rb') as f:
-  model = pickle.load(f)
+    model = pickle.load(f)
 
 #Importation des infos clients
 data_work_complet = pd.read_csv("./data_work.csv")
@@ -164,15 +164,14 @@ def dashboard():
 def data_stream():
     csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
     conv_data_csv = pd.read_csv(csv_url, sep = '\t')
-    st.write("variable conv_data_csv : ", conv_data_csv)
+    print("variable conv_data_csv : ", conv_data_csv)
     #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
-    pred = model.predict(conv_data_csv)
+    pred_result = model.predict(conv_data_csv)
     #pred = str(pred)
-    print("Affichage de la variable target : ", pred)
-    pred = pd.DataFrame(pred)
+    print("Affichage de la variable target : ", pred_result)
+    pred = pd.DataFrame(pred_result)
     pred = pred.to_csv(r'pred.csv',sep='\t', index=False)
     with open("pred.csv", "rb") as f:
-        # Encoding "my-local-image.jpg" to base64 format
         encodedData = base64.b64encode(f.read())
 
         headers = {
@@ -188,29 +187,27 @@ def data_stream():
         print(r.text)  # Printing the response
       
     #Calcul du score client
-    score = model.predict_proba(conv_data_csv)
+    #score = model.predict_proba(conv_data_csv)
     #score = str(score)
-    score = pd.DataFrame(score)
-    score = score.to_csv(r'score.csv',sep='\t', index=False)
-    print("Affichage du score predictproba : ", score)
-    with open("score.csv", "rb") as f:
+    #score = pd.DataFrame(score)
+    #score = score.to_csv(r'score.csv',sep='\t', index=False)
+    #print("Affichage du score predictproba : ", score)
+    #with open("score.csv", "rb") as f:
       # Encoding "my-local-image.jpg" to base64 format
-      encodedData = base64.b64encode(f.read())
+    #  encodedData = base64.b64encode(f.read())
 
-      headers = {
-          "Authorization": f'''Bearer {githubToken}''',
-          "Content-type": "application/vnd.github+json"
-      }
-      data = {
-          "message": "Enregistrement du score predictproba",  # Put your commit message here.
-          "content": encodedData.decode("utf-8")
-      }
+    #  headers = {
+    #      "Authorization": f'''Bearer {githubToken}''',
+    #      "Content-type": "application/vnd.github+json"
+    #  }
+    #  data = {
+    #      "message": "Enregistrement du score predictproba",  # Put your commit message here.
+    #      "content": encodedData.decode("utf-8")
+    #  }
 
-      r2 = requests.put(githubAPIURL3, headers=headers, json=data)
-      print(r2.text)  # Printing the response
+    #  r2 = requests.put(githubAPIURL3, headers=headers, json=data)
+    #  print(r2.text)  # Printing the response
     
-
-
 if __name__ == '__main__':
     print("hello")
     launch_unittest = unittest.main()

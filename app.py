@@ -162,7 +162,7 @@ def dashboard():
 @app.route("/api/data_stream")
 def data_stream():
     csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
-    conv_data_csv = pd.read_csv(csv_url, sep = '\t', index=False)
+    conv_data_csv = pd.read_csv(csv_url, sep = '\t')
     st.write("variable conv_data_csv : ", conv_data_csv)
     #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
     pred = model.predict(conv_data_csv)

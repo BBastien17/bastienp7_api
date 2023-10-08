@@ -21,6 +21,10 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from pandas import json_normalize
 import json
+# Authentication is defined via github.Auth
+from github import Auth
+
+
 
 #Importation du modèle mlflow
 path = 'Projet_7/'
@@ -158,9 +162,9 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-repo = g.get_repo("https://github.com/BBastien17/bastienp7_api")
-print("Affichage conv_csv_data.csv")
-contents = repo.get_contents("conv_csv_data.csv")
+#repo = g.get_repo("https://github.com/BBastien17/bastienp7_api")
+#print("Affichage conv_csv_data.csv")
+#contents = repo.get_contents("conv_csv_data.csv")
 #print(contents)
 #conv_csv_data = pd.read_csv("./conv_csv_data.csv")
 

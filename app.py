@@ -128,10 +128,10 @@ def add():
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
-file = urllib.requestt.urlopen(file:///C:/Users/Bastien/bastienp7_api_streamlit/bastienp7_api-main/conv_csv_data.csv')
-content = file.read()
-conv_csv_data = pd.read_csv(content, delimiter='\t')
-print(conv_csv_data)
+#file = urllib.requestt.urlopen(file:///C:/Users/Bastien/bastienp7_api_streamlit/bastienp7_api-main/conv_csv_data.csv')
+#content = file.read()
+#conv_csv_data = pd.read_csv(content, delimiter='\t')
+#print(conv_csv_data)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
@@ -158,15 +158,19 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-@app.route("/api/data_stream")
-def data_stream():
-    #data_stream = pd.read_json(requests.get("http://localhost:8501", data = 
-    print("data with api")
-    selector = pd.read_json(request.args.get("http://localhost:8501", data=data_json).json())
-    print(selector)
-    data_stream = [666]
-    return json.dumps(data_stream)
-    #return json.dumps(data_stream.to_json())
+conv_csv_data.csv = pd.read_csv("./conv_csv_data.csv")
+print("Affichage conv_csv_data.csv")
+print(conv_csv_data.csv.head())
+
+#@app.route("/api/data_stream")
+#def data_stream():
+#    #data_stream = pd.read_json(requests.get("http://localhost:8501", data = 
+#    print("data with api")
+#    selector = pd.read_json(request.args.get("http://localhost:8501", data=data_json).json())
+#    print(selector)
+#    data_stream = [666]
+#    return json.dumps(data_stream)
+#    #return json.dumps(data_stream.to_json())
 
 
 if __name__ == '__main__':

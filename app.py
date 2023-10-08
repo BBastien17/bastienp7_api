@@ -167,12 +167,13 @@ train = pd.read_csv(
 #train = train.rename(columns={"Well Name": "WELL"})
 traini = [123]
 
-@app.route("/api/data")
+@app.route("/api/data_stream")
 def data_stream():
     print("data with api")
     selector = request.args.get("selector")
     data_stream = [666]
-    return json.dumps(data_stream.to_json())
+    return json.dumps(data_stream)
+    #return json.dumps(data_stream.to_json())
 
 
 #@app.route("/api/labels")

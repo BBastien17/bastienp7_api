@@ -21,8 +21,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from pandas import json_normalize
 import json
-# Authentication is defined via github.Auth
-from github import Auth
 import base64
 
 

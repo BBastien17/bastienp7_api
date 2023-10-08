@@ -167,10 +167,15 @@ train = pd.read_csv(
 #train = train.rename(columns={"Well Name": "WELL"})
 traini = [123]
 
+data_col = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimonial",
+            "Nb_enfants", "Nb_membre_famille", "Montant_des_revenus", "Note_region_client",
+            "Nb_demande_client", "Montants_du_pret", "Montant_des_annuites",
+            "Nb_jours_credits", "Montant_anticipation_pret", "Delai_anticipation_pret"]
+
 @app.route("/api/data_stream")
 def data_stream():
     print("data with api")
-    selector = request.args.get(selector.columns.tolist())
+    selector = request.args.get(data_col)
     data_stream = [666]
     return json.dumps(data_stream)
     #return json.dumps(data_stream.to_json())

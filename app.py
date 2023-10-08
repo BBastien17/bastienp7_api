@@ -155,11 +155,31 @@ def dashboard():
     return (subprocess.run(["python", "./dashboard.py"]))
 
 
-def streamlit_to_api():
-    print("coucou test")
-    test = {23}
-    return jsonify(test)
+#def streamlit_to_api():
+#    print("coucou test")
+#    test = {23}
+#    return jsonify(test)
 
+train = pd.read_csv(
+    "https://raw.githubusercontent.com/pkhetland/Facies-prediction-TIP160/master/datasets/facies_vectors.csv"
+)
+train = train.rename(columns={"Well Name": "WELL"})
+
+
+@app.route("/api/data")
+def data():
+    selector = request.args.get("selector")
+    if not selector:
+        selector = "SHRIMPLIN"
+    # print(selector)
+    data = train[train["WELL"].isin([selector])]
+    # print(data)
+    return json.dumps(data.to_json())
+
+
+@app.route("/api/labels")
+def labels():
+    return json.dumps(train.WELL.unique().tolist())
 
 
 if __name__ == '__main__':

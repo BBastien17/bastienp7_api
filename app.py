@@ -154,22 +154,13 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-from werkzeug import Request, Response
 
-@app.post('/streamlit_to_api')
-def streamlit_to_api(data):
+def streamlit_to_api():
     print("coucou test")
     test = {23}
     return jsonify(test)
 
-from server_thread import ServerThread
 
-
-@Request.application
-def app(request):
-    return Response("howdy", 200)
-
-server = ServerThread(app)
 
 if __name__ == '__main__':
     print("hello")

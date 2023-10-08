@@ -168,6 +168,7 @@ def data_stream():
     pred = model.predict(conv_data_csv)
     #pred = str(pred)
     print("Affichage de la variable target : ", pred)
+    pred = pd.DataFrame(pred)
     pred = pred.to_csv(r'pred.csv',sep='\t', index=False)
     with open("pred.csv", "rb") as f:
         # Encoding "my-local-image.jpg" to base64 format
@@ -188,6 +189,7 @@ def data_stream():
     #Calcul du score client
     score = model.predict_proba(conv_data_csv)
     #score = str(score)
+    score = pd.DataFrame(score)
     score = score.to_csv(r'score.csv',sep='\t', index=False)
     print("Affichage du score predictproba : ", score)
     with open("score.csv", "rb") as f:

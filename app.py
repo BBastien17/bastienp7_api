@@ -128,7 +128,8 @@ def add():
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
-
+conv_csv_data = pd.read_csv(r'file:///Users/Bastien/bastienp7_api_streamlit/bastienp7_api-main/conv_csv_data.csv', delimiter='\t')
+print(conv_csv_data)
 
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
@@ -155,23 +156,6 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-
-#def streamlit_to_api():
-#    print("coucou test")
-#    test = {23}
-#    return jsonify(test)
-
-train = pd.read_csv(
-    "https://raw.githubusercontent.com/pkhetland/Facies-prediction-TIP160/master/datasets/facies_vectors.csv"
-)
-#train = train.rename(columns={"Well Name": "WELL"})
-traini = [123]
-
-data_col = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimonial",
-            "Nb_enfants", "Nb_membre_famille", "Montant_des_revenus", "Note_region_client",
-            "Nb_demande_client", "Montants_du_pret", "Montant_des_annuites",
-            "Nb_jours_credits", "Montant_anticipation_pret", "Delai_anticipation_pret"]
-
 @app.route("/api/data_stream")
 def data_stream():
     #data_stream = pd.read_json(requests.get("http://localhost:8501", data = 
@@ -181,12 +165,6 @@ def data_stream():
     data_stream = [666]
     return json.dumps(data_stream)
     #return json.dumps(data_stream.to_json())
-
-
-#@app.route("/api/labels")
-#def labels():
-#    print("data with labels")
-#    return json.dumps(traini)
 
 
 if __name__ == '__main__':

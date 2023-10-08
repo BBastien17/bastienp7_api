@@ -166,7 +166,7 @@ def data_stream():
     conv_data_csv = pd.read_csv(csv_url, sep = '\t')
     print("variable conv_data_csv : ", conv_data_csv)
     #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
-    conv_data_csv = conv_data_csv.astype(float)
+    conv_data_csv = conv_data_csv.astype(int)
     pred_result = model.predict(conv_data_csv)
     #pred = str(pred)
     print("Affichage de la variable target : ", pred_result)

@@ -175,7 +175,7 @@ data_col = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimoni
 @app.route("/api/data_stream")
 def data_stream():
     print("data with api")
-    selector = request.args.get(data_col)
+    selector = request.args.get(http://localhost:8501, params= {data_recup_val})
     data_stream = [666]
     return json.dumps(data_stream)
     #return json.dumps(data_stream.to_json())

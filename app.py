@@ -20,6 +20,7 @@ import mlflow
 from fastapi import FastAPI
 from pydantic import BaseModel
 from pandas import json_normalize
+import json
 
 #Importation du modèle mlflow
 path = 'Projet_7/'

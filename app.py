@@ -162,25 +162,51 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-#repo = g.get_repo("https://github.com/BBastien17/bastienp7_api")
-#print("Affichage conv_csv_data.csv")
-#contents = repo.get_contents("conv_csv_data.csv")
-#print(contents)
-#conv_csv_data = pd.read_csv("./conv_csv_data.csv")
+@app.route("/api/data_stream")
+def data_stream():
+    csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
+    conv_data_csv = pd.read_csv(csv_url, error_bad_lines=False)
+    st.write("variable conv_data_csv : ", conv_data_csv)
+    #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
+    pred = model.predict(conv_data_csv)
+    pred = str(pred)
+    print("Affichage de la variable target : ", pred)
+    with open("pred.txt", "rb") as f:
+        # Encoding "my-local-image.jpg" to base64 format
+        encodedData = base64.b64encode(f.read())
 
-#print(conv_csv_data.head())
-#data_target_complet = pd.read_csv("./data_target.csv")
-#print(data_target_complet.head())
+        headers = {
+            "Authorization": f'''Bearer {githubToken}''',
+            "Content-type": "application/vnd.github+json"
+        }
+        data = {
+            "message": "Enregistrement du score client target",  # Put your commit message here.
+            "content": encodedData.decode("utf-8")
+        }
 
-#@app.route("/api/data_stream")
-#def data_stream():
-#    #data_stream = pd.read_json(requests.get("http://localhost:8501", data = 
-#    print("data with api")
-#    selector = pd.read_json(request.args.get("http://localhost:8501", data=data_json).json())
-#    print(selector)
-#    data_stream = [666]
-#    return json.dumps(data_stream)
-#    #return json.dumps(data_stream.to_json())
+        r = requests.put(githubAPIURL, headers=headers, json=data)
+        print(r.text)  # Printing the response
+      
+    #Calcul du score client
+    score = model.predict_proba(conv_data_csv)
+    score = str(score)
+    print("Affichage du score predictproba : ", score)
+    with open("score.txt", "rb") as f:
+      # Encoding "my-local-image.jpg" to base64 format
+      encodedData = base64.b64encode(f.read())
+
+      headers = {
+          "Authorization": f'''Bearer {githubToken}''',
+          "Content-type": "application/vnd.github+json"
+      }
+      data = {
+          "message": "Enregistrement du score predictproba",  # Put your commit message here.
+          "content": encodedData.decode("utf-8")
+      }
+
+      r2 = requests.put(githubAPIURL, headers=headers, json=data)
+      print(r2.text)  # Printing the response
+    
 
 
 if __name__ == '__main__':

@@ -161,10 +161,15 @@ def streamlit_to_api(data):
     print("coucou test")
     test = {23}
     return jsonify(test)
-  
+
+from server_thread import ServerThread
+
+
 @Request.application
 def app(request):
     return Response("howdy", 200)
+
+server = ServerThread(app)
 
 if __name__ == '__main__':
     print("hello")

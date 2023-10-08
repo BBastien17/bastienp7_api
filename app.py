@@ -169,7 +169,7 @@ train = train.rename(columns={"Well Name": "WELL"})
 
 @app.route("/api/data")
 def data():
-    print("data with api)
+    print("data with api")
     selector = request.args.get("selector")
     if not selector:
         selector = "SHRIMPLIN"
@@ -181,7 +181,7 @@ def data():
 
 @app.route("/api/labels")
 def labels():
-    print("data with labels)
+    print("data with labels")
     return json.dumps(train.WELL.unique().tolist())
 
 

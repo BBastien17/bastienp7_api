@@ -168,22 +168,17 @@ train = pd.read_csv(
 traini = [123]
 
 @app.route("/api/data")
-def data():
+def data_stream():
     print("data with api")
     selector = request.args.get("selector")
-    #if not selector:
-    #    selector = "SHRIMPLIN"
-    #print(selector)
-    data = [123]
-    #data = train[train["WELL"].isin([selector])]
-    print(data)
-    return json.dumps(data.to_json())
+    data_stream = [666]
+    return json.dumps(data_stream.to_json())
 
 
-@app.route("/api/labels")
-def labels():
-    print("data with labels")
-    return json.dumps(traini)
+#@app.route("/api/labels")
+#def labels():
+#    print("data with labels")
+#    return json.dumps(traini)
 
 
 if __name__ == '__main__':

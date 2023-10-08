@@ -22,6 +22,7 @@ from pydantic import BaseModel
 from pandas import json_normalize
 import json
 import base64
+import requests
 
 
 #Importation du modèle mlflow

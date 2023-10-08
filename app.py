@@ -207,6 +207,8 @@ def data_stream():
 
     #  r2 = requests.put(githubAPIURL3, headers=headers, json=data)
     #  print(r2.text)  # Printing the response
+
+    return redirect(url_for('index'))
     
 if __name__ == '__main__':
     print("hello")

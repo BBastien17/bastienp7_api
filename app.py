@@ -35,8 +35,8 @@ print(data_work_complet.head())
 data_target_complet = pd.read_csv("./data_target.csv")
 print(data_target_complet.head())
 
-githubAPIURL2 = "https://api.github.com/repos/BBastien17/bastienp7_api/contents/pred"
-githubAPIURL3 = "https://api.github.com/repos/BBastien17/bastienp7_api/contents/score"
+githubAPIURL2 = "https://api.github.com/repos/BBastien17/bastienp7_api/contents/pred.csv"
+githubAPIURL3 = "https://api.github.com/repos/BBastien17/bastienp7_api/contents/score.csv"
 githubToken = "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"
 
 #Fonction pour calculer le score prédictproba du client
@@ -168,7 +168,8 @@ def data_stream():
     pred = model.predict(conv_data_csv)
     #pred = str(pred)
     print("Affichage de la variable target : ", pred)
-    with open("pred", "rb") as f:
+    pred = pred.to_csv(r'pred.csv',sep='\t', index=False)
+    with open("pred.csv", "rb") as f:
         # Encoding "my-local-image.jpg" to base64 format
         encodedData = base64.b64encode(f.read())
 
@@ -187,8 +188,9 @@ def data_stream():
     #Calcul du score client
     score = model.predict_proba(conv_data_csv)
     #score = str(score)
+    score = score.to_csv(r'score.csv',sep='\t', index=False)
     print("Affichage du score predictproba : ", score)
-    with open("score", "rb") as f:
+    with open("score.csv", "rb") as f:
       # Encoding "my-local-image.jpg" to base64 format
       encodedData = base64.b64encode(f.read())
 

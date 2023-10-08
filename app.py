@@ -23,7 +23,7 @@ from pandas import json_normalize
 import json
 # Authentication is defined via github.Auth
 from github import Auth
-
+import base64
 
 
 #Importation du modèle mlflow
@@ -36,6 +36,10 @@ data_work_complet = pd.read_csv("./data_work.csv")
 print(data_work_complet.head())
 data_target_complet = pd.read_csv("./data_target.csv")
 print(data_target_complet.head())
+
+githubAPIURL2 = "https://api.github.com/repos/BBastien17/bastienp7_api/contents/pred.csv"
+githubAPIURL3 = "https://api.github.com/repos/BBastien17/bastienp7_api/contents/score.csv"
+githubToken = "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"
 
 #Fonction pour calculer le score prédictproba du client
 def calc_score_predictproba (ref_client, data_work_complet):
@@ -169,9 +173,9 @@ def data_stream():
     st.write("variable conv_data_csv : ", conv_data_csv)
     #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
     pred = model.predict(conv_data_csv)
-    pred = str(pred)
+    #pred = str(pred)
     print("Affichage de la variable target : ", pred)
-    with open("pred.txt", "rb") as f:
+    with open("pred.csv", "rb") as f:
         # Encoding "my-local-image.jpg" to base64 format
         encodedData = base64.b64encode(f.read())
 
@@ -184,14 +188,14 @@ def data_stream():
             "content": encodedData.decode("utf-8")
         }
 
-        r = requests.put(githubAPIURL, headers=headers, json=data)
+        r = requests.put(githubAPIURL2, headers=headers, json=data)
         print(r.text)  # Printing the response
       
     #Calcul du score client
     score = model.predict_proba(conv_data_csv)
-    score = str(score)
+    #score = str(score)
     print("Affichage du score predictproba : ", score)
-    with open("score.txt", "rb") as f:
+    with open("score.csv", "rb") as f:
       # Encoding "my-local-image.jpg" to base64 format
       encodedData = base64.b64encode(f.read())
 
@@ -204,7 +208,7 @@ def data_stream():
           "content": encodedData.decode("utf-8")
       }
 
-      r2 = requests.put(githubAPIURL, headers=headers, json=data)
+      r2 = requests.put(githubAPIURL3, headers=headers, json=data)
       print(r2.text)  # Printing the response
     
 

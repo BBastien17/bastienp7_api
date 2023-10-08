@@ -174,8 +174,10 @@ data_col = ["Type_de_pret", "Genre", "Age", "Niveau_d_etudes", "Regime_matrimoni
 
 @app.route("/api/data_stream")
 def data_stream():
+    #data_stream = pd.read_json(requests.get("http://localhost:8501", data = 
     print("data with api")
-    selector = request.args.get(http://localhost:8501, params= {data_recup_val})
+    selector = pd.read_json(request.args.get(http://localhost:8501, data=data_json).json())
+    print(selector)
     data_stream = [666]
     return json.dumps(data_stream)
     #return json.dumps(data_stream.to_json())

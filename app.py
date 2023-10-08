@@ -170,7 +170,7 @@ traini = [123]
 @app.route("/api/data_stream")
 def data_stream():
     print("data with api")
-    selector = request.args.get("selector")
+    selector = request.args.get(selector.columns.tolist())
     data_stream = [666]
     return json.dumps(data_stream)
     #return json.dumps(data_stream.to_json())

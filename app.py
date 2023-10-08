@@ -158,9 +158,11 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-conv_csv_data.csv = pd.read_csv("./conv_csv_data.csv")
+conv_csv_data = pd.read_csv("./conv_csv_data.csv")
 print("Affichage conv_csv_data.csv")
-print(conv_csv_data.csv.head())
+print(conv_csv_data.head())
+#data_target_complet = pd.read_csv("./data_target.csv")
+#print(data_target_complet.head())
 
 #@app.route("/api/data_stream")
 #def data_stream():

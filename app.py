@@ -134,11 +134,6 @@ def add():
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
-#file = urllib.requestt.urlopen(file:///C:/Users/Bastien/bastienp7_api_streamlit/bastienp7_api-main/conv_csv_data.csv')
-#content = file.read()
-#conv_csv_data = pd.read_csv(content, delimiter='\t')
-#print(conv_csv_data)
-
 @app.route('/client_description', methods = ['GET', 'POST'])
 def client_description():
     with open('dict_data.pkl', 'rb') as fp:
@@ -167,7 +162,7 @@ def dashboard():
 @app.route("/api/data_stream")
 def data_stream():
     csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
-    conv_data_csv = pd.read_csv(csv_url, error_bad_lines=False)
+    conv_data_csv = pd.read_csv(csv_url)
     st.write("variable conv_data_csv : ", conv_data_csv)
     #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
     pred = model.predict(conv_data_csv)

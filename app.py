@@ -183,7 +183,7 @@ def data():
 @app.route("/api/labels")
 def labels():
     print("data with labels")
-    return json.dumps(traini.unique().tolist())
+    return json.dumps(traini.tolist())
 
 
 if __name__ == '__main__':

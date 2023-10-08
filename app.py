@@ -173,9 +173,10 @@ def data():
     selector = request.args.get("selector")
     if not selector:
         selector = "SHRIMPLIN"
-    # print(selector)
-    data = train[train["WELL"].isin([selector])]
-    # print(data)
+    print(selector)
+    data = 1
+    #data = train[train["WELL"].isin([selector])]
+    print(data)
     return json.dumps(data.to_json())
 
 

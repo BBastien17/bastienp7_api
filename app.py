@@ -128,7 +128,7 @@ def add():
     #Permet d'être rediriger vers une autre page html
     return render_template('add.html')
 
-conv_csv_data = pd.read_csv(r'file:///Users/Bastien/bastienp7_api_streamlit/bastienp7_api-main/conv_csv_data.csv', delimiter='\t')
+conv_csv_data = pd.read_csv(r'C:/Users/Bastien/bastienp7_api_streamlit/bastienp7_api-main/conv_csv_data.csv', delimiter='\t')
 print(conv_csv_data)
 
 @app.route('/client_description', methods = ['GET', 'POST'])

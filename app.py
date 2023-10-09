@@ -160,34 +160,34 @@ def dashboard():
     print("Lancement du Dashboard de simulation")
     return (subprocess.run(["python", "./dashboard.py"]))
 
-@app.route("/api/data_stream")
-def data_stream():
-    csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
-    conv_data_csv = pd.read_csv(csv_url, sep = '\t')
-    print("variable conv_data_csv : ", conv_data_csv)
-    #Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
-    list_val = conv_data_csv.values.tolist()
-    data_val = pd.DataFrame(list_val)
-    #conv_data_csv = conv_data_csv.astype(int)
-    pred_result = model.predict(data_val)
-    #pred = str(pred)
-    print("Affichage de la variable target : ", pred_result)
-    pred = pd.DataFrame(pred_result)
-    pred = pred.to_csv(r'pred.csv',sep='\t', index=False)
-    with open("pred.csv", "rb") as f:
-        encodedData = base64.b64encode(f.read())
+#@app.route("/api/data_stream")
+#def data_stream():
+csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
+conv_data_csv = pd.read_csv(csv_url, sep = '\t')
+print("variable conv_data_csv : ", conv_data_csv)
+#Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
+list_val = conv_data_csv.values.tolist()
+data_val = pd.DataFrame(list_val)
+#conv_data_csv = conv_data_csv.astype(int)
+pred_result = model.predict(data_val)
+#pred = str(pred)
+print("Affichage de la variable target : ", pred_result)
+pred = pd.DataFrame(pred_result)
+pred = pred.to_csv(r'pred.csv',sep='\t', index=False)
+with open("pred.csv", "rb") as f:
+encodedData = base64.b64encode(f.read())
 
-        headers = {
-            "Authorization": f'''Bearer {githubToken}''',
-            "Content-type": "application/vnd.github+json"
-        }
-        data = {
-            "message": "Enregistrement du score client target",  # Put your commit message here.
-            "content": encodedData.decode("utf-8")
-        }
+headers = {
+    "Authorization": f'''Bearer {githubToken}''',
+    "Content-type": "application/vnd.github+json"
+}
+data = {
+    "message": "Enregistrement du score client target",  # Put your commit message here.
+    "content": encodedData.decode("utf-8")
+}
 
-        r = requests.put(githubAPIURL2, headers=headers, json=data)
-        print(r.text)  # Printing the response
+r = requests.put(githubAPIURL2, headers=headers, json=data)
+print(r.text)  # Printing the response
       
     #Calcul du score client
     #score = model.predict_proba(conv_data_csv)
@@ -211,7 +211,7 @@ def data_stream():
     #  r2 = requests.put(githubAPIURL3, headers=headers, json=data)
     #  print(r2.text)  # Printing the response
 
-    return redirect(url_for('index'))
+    #return redirect(url_for('index'))
     
 if __name__ == '__main__':
     print("hello")

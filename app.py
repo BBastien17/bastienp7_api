@@ -165,7 +165,7 @@ def dashboard():
 csv_url = 'https://raw.githubusercontent.com/BBastien17/bastienp7_api/main/conv_csv_data.csv'
 conv_data_csv = pd.read_csv(csv_url, sep = '\t')
 print("variable conv_data_csv : ", conv_data_csv)
-#Prédiction du score pour l'acceptation ou refus du prêt (variable Target)
+#Prediction du score pour l'acceptation ou refus du prêt (variable Target)
 list_val = conv_data_csv.values.tolist()
 data_val = pd.DataFrame(list_val)
 #conv_data_csv = conv_data_csv.astype(int)

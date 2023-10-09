@@ -175,19 +175,19 @@ print("Affichage de la variable target : ", pred_result)
 pred = pd.DataFrame(pred_result)
 pred = pred.to_csv(r'pred.csv',sep='\t', index=False)
 with open("pred.csv", "rb") as f:
-encodedData = base64.b64encode(f.read())
-
-headers = {
-    "Authorization": f'''Bearer {githubToken}''',
-    "Content-type": "application/vnd.github+json"
-}
-data = {
-    "message": "Enregistrement du score client target",  # Put your commit message here.
-    "content": encodedData.decode("utf-8")
-}
-
-r = requests.put(githubAPIURL2, headers=headers, json=data)
-print(r.text)  # Printing the response
+    encodedData = base64.b64encode(f.read())
+    
+    headers = {
+        "Authorization": f'''Bearer {githubToken}''',
+        "Content-type": "application/vnd.github+json"
+    }
+    data = {
+        "message": "Enregistrement du score client target",  # Put your commit message here.
+        "content": encodedData.decode("utf-8")
+    }
+    
+    r = requests.put(githubAPIURL2, headers=headers, json=data)
+    print(r.text)  # Printing the response
       
     #Calcul du score client
     #score = model.predict_proba(conv_data_csv)

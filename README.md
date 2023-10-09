@@ -21,7 +21,7 @@ déjà les informations des clients. Dans ce cas-là seule la référence sera n
 en recueillant divers éléments. Dans les deux cas en validant nous obtenons une réponse claire pour nous informer si le prêt a un avis
 favorable ou non. Nous retrouvons aussi la situation de cet individu et son positionnement par rapport à l’ensemble des clients de l’entreprise.
 Cela nous donne donc une indication que les éléments qui peuvent améliorer le résultat en cas d’avis défavorable. Pour le choix de la page
-client nous utilisons Page_client.py.  Pour le choix de la page prospect, nous utilisons le fichier Page_prospect.py qui réalise une simulation
+client nous utilisons Page_client.py. Pour le choix de la page prospect, nous utilisons le fichier Page_prospect.py qui réalise une simulation
 en utilisant le modèle XGBoost généré avec MLFLOW dans les notebooks de préparation.
 
 Le fait d’avoir cette interaction entre l’API et le Dashboard est essentiel pour une bonne fluidité lors du rendez-vous avec le client/prospect

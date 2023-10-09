@@ -17,9 +17,6 @@ from streamlit import runtime
 #Librairies pour MLFLOW Tracking
 import os
 import mlflow
-#from fastapi import FastAPI
-#from pydantic import BaseModel
-#from pandas import json_normalize
 import json
 import base64
 import requests

@@ -21,4 +21,6 @@ xgboost==1.7.6
 pytest==6.2.5
 pytest-html==3.1.1
 pytest-cov==2.10.1
-FastAPI
+import json
+import base64
+import requests
